@@ -292,7 +292,7 @@ export default function Builds() {
 
   return (
     <div>
-      <section className="px-12 py-8 border-b border-border">
+      <section className="px-12 py-8 border-b border-border h–[98px]">
         <div className="max-w-[1240px]">
           <h1 className="text-xl font-bold">Builds</h1>
         </div>

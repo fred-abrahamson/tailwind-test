@@ -37,8 +37,8 @@ export default function RootLayout({
       >
         <div className="bg-background flex gap-4 min-h-full">
           <Sidebar />
-          <div className="ml-[400px] w-full">
-            <div className="bg-background min-h-full shadow-xl border-l border-border w-full">
+          <div className="ml-[320px] w-full">
+            <div className="bg-background min-h-full border-l border-border w-full">
               {children}
             </div>
           </div>
