@@ -1,0 +1,432 @@
+"use client";
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { Play, CircleCheck, LoaderCircle } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+} from "@/components/ui/drawer";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+type BuildType = {
+  value: string;
+  number: number;
+  releaseTrack: string | null;
+  processing: number;
+  message: string | null;
+};
+
+const BUILDS: BuildType[] = [
+  {
+    value: "e3d80124-b6e9-11ef-9db7-5b71cc6e09c2",
+    number: 36,
+    releaseTrack: null,
+    processing: 20,
+    message: null,
+  },
+  {
+    value: "36fd4c56-b6e5-11ef-b61f-3f066788534b",
+    number: 35,
+    releaseTrack: null,
+    processing: 30,
+    message: null,
+  },
+  {
+    value: "9a2487d2-b3bf-11ef-a2e4-4370a17f3389",
+    number: 34,
+    releaseTrack: null,
+    processing: 50,
+    message: "test error",
+  },
+  {
+    value: "8cc487fa-aca7-11ef-a93b-eb6881f43ccf",
+    number: 33,
+    releaseTrack: "Open testing",
+    processing: 80,
+    message: "test mute videoplayer",
+  },
+  {
+    value: "640c783e-ab28-11ef-ac94-2b900f3940ba",
+    number: 32,
+    releaseTrack: null,
+    processing: 80,
+    message: "attempt7",
+  },
+  {
+    value: "821ce0fe-ab26-11ef-ac94-0fe74ef8592f",
+    number: 31,
+    releaseTrack: "Production",
+    processing: 90,
+    message: "attempt6",
+  },
+  {
+    value: "d519a72a-ab25-11ef-ac94-4745f1cb7642",
+    number: 30,
+    releaseTrack: null,
+    processing: 100,
+    message: "attempt5",
+  },
+  {
+    value: "7436663c-ab25-11ef-ac94-4b7e686675b4",
+    number: 29,
+    releaseTrack: null,
+    processing: 100,
+    message: "attempt4",
+  },
+  {
+    value: "dbcb7d6c-ab22-11ef-9710-33d0ad5c8473",
+    number: 28,
+    releaseTrack: null,
+    processing: 100,
+    message: "attempt3",
+  },
+  {
+    value: "417fb4c6-ab22-11ef-9710-cf86f9a3c92c",
+    number: 27,
+    releaseTrack: null,
+    processing: 100,
+    message: "attempt2",
+  },
+  {
+    value: "764d0d62-ab21-11ef-97a6-e79a7dda1f0b",
+    number: 26,
+    releaseTrack: null,
+    processing: 100,
+    message: "testing videos",
+  },
+  {
+    value: "e798f370-8a31-11ef-b933-33e42da0249a",
+    number: 25,
+    releaseTrack: null,
+    processing: 100,
+    message: "dev test",
+  },
+  {
+    value: "8d4e19da-4833-11ef-94bb-8f1c2792054f",
+    number: 24,
+    releaseTrack: null,
+    processing: 100,
+    message: "Factory July 2024 Update",
+  },
+  {
+    value: "ab58629c-02fa-11ef-b3ee-dfd56ebeccef",
+    number: 23,
+    releaseTrack: null,
+    processing: 100,
+    message: "Production Release c.3.2.0.7f",
+  },
+  {
+    value: "99f1f22a-fbed-11ee-80a1-cfd526425ea7",
+    number: 22,
+    releaseTrack: null,
+    processing: 100,
+    message: "APK file fix (Prod)",
+  },
+  {
+    value: "c162a124-fbe8-11ee-91be-fb82a479e50a",
+    number: 21,
+    releaseTrack: null,
+    processing: 100,
+    message: "Final Test",
+  },
+  {
+    value: "1685fb3a-fbe7-11ee-9863-27b980657315",
+    number: 20,
+    releaseTrack: null,
+    processing: 100,
+    message: "Test again",
+  },
+  {
+    value: "d133c8de-fbe4-11ee-b5a2-c31ca3089c57",
+    number: 19,
+    releaseTrack: null,
+    processing: 100,
+    message: "Test upload",
+  },
+  {
+    value: "56d9ec0e-f72e-11ee-86f0-03b4a39cfa54",
+    number: 18,
+    releaseTrack: null,
+    processing: 100,
+    message: "test 3",
+  },
+  {
+    value: "4649b432-f72e-11ee-86f0-23b763dbc63f",
+    number: 17,
+    releaseTrack: null,
+    processing: 100,
+    message: "test 2",
+  },
+  {
+    value: "dc293abe-f72d-11ee-86f0-23c8e37e0c8d",
+    number: 16,
+    releaseTrack: null,
+    processing: 100,
+    message: "Test Upload",
+  },
+  {
+    value: "dff53fe8-e531-11ee-8ed0-634c004ae405",
+    number: 15,
+    releaseTrack: null,
+    processing: 100,
+    message: "all env",
+  },
+  {
+    value: "42c15b9e-d190-11ee-9223-939aab8951b8",
+    number: 14,
+    releaseTrack: null,
+    processing: 100,
+    message: "Production Release v2",
+  },
+  {
+    value: "c60c89d0-cf3b-11ee-a6f4-e79dc7b0b215",
+    number: 13,
+    releaseTrack: null,
+    processing: 100,
+    message: "Pre-production V.2.1",
+  },
+  {
+    value: "bf8ee506-cf29-11ee-bcd8-bfaf808b70d7",
+    number: 12,
+    releaseTrack: null,
+    processing: 100,
+    message: "Will's emergency pley connect test (no iaps)",
+  },
+  {
+    value: "9c86693e-badf-11ee-8bcd-5b704ae3c356",
+    number: 11,
+    releaseTrack: null,
+    processing: 100,
+    message: "bufgix4",
+  },
+  {
+    value: "64842fa4-bade-11ee-8bcd-9fd12cfa8e0f",
+    number: 10,
+    releaseTrack: null,
+    processing: 100,
+    message: "bugfix3",
+  },
+  {
+    value: "793ae3ee-badd-11ee-8bcd-37d516d481fe",
+    number: 9,
+    releaseTrack: null,
+    processing: 100,
+    message: "bugfix2",
+  },
+  {
+    value: "56b11894-badc-11ee-8bcd-abda6c17eb34",
+    number: 8,
+    releaseTrack: null,
+    processing: 100,
+    message: "bugfix",
+  },
+  {
+    value: "21c34bcc-bada-11ee-8bcd-67569d4188ac",
+    number: 7,
+    releaseTrack: null,
+    processing: 100,
+    message: "new pley sdk version",
+  },
+  {
+    value: "9c56016c-bad1-11ee-8bcd-87d8d6c6e6d3",
+    number: 6,
+    releaseTrack: null,
+    processing: 100,
+    message: "purchased popup added",
+  },
+  {
+    value: "0e342d98-baca-11ee-9fc4-8f67eb99150f",
+    number: 5,
+    releaseTrack: null,
+    processing: 100,
+    message: "entitlement consume test",
+  },
+  {
+    value: "524605c8-bac6-11ee-ae6e-ef2f9e5081cc",
+    number: 4,
+    releaseTrack: null,
+    processing: 100,
+    message: "consuming bug fix",
+  },
+  {
+    value: "f42f4d3c-bac0-11ee-8660-5bcc67631926",
+    number: 3,
+    releaseTrack: null,
+    processing: 100,
+    message: "store added",
+  },
+  {
+    value: "6d4f260e-b9e2-11ee-949b-03cc8ab64e60",
+    number: 2,
+    releaseTrack: null,
+    processing: 100,
+    message: "splashscreen fix",
+  },
+  {
+    value: "5d5681ee-b9e1-11ee-972c-1bd72807e4fb",
+    number: 1,
+    releaseTrack: null,
+    processing: 100,
+    message: "gameprogress test",
+  },
+];
+
+export default function Builds() {
+  const [build, setBuild] = React.useState<BuildType | null>(null);
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const [runAs, setRunAs] = React.useState<"guest" | "email" | "id">("guest");
+
+  return (
+    <div>
+      <section className="px-12 py-8 border-b border-border">
+        <div className="max-w-[1240px]">
+          <h1 className="text-xl font-bold">Builds</h1>
+        </div>
+      </section>
+      <section className="border-b border-border">
+        <div>
+          <div>
+            {BUILDS.map((item) => (
+              <div
+                key={item.value}
+                className={cn(
+                  "flex gap-8 py-4 px-12 group items-center cursor-pointer hover:bg-muted",
+                  item.value === build?.value && "bg-muted"
+                )}
+                onClick={() => {
+                  setBuild(item);
+                  setIsOpen(true);
+                }}
+              >
+                <div className="text-base font-mono">{item.number}</div>
+                <div className="bg-white/5 rounded-full p-3 group-hover:bg-white/20">
+                  <Play fill="#fff" size={12} />
+                </div>
+                {item.message ? (
+                  <div className="text-base w-full flex flex-col gap-0.5">
+                    <span className="font-semibold">{item.message}</span>
+                    <span className="text-sm font-normal opacity-50">
+                      Uploaded 2 months ago by SeebATPley
+                    </span>
+                  </div>
+                ) : (
+                  <div className="text-base w-full flex flex-col gap-0.5">
+                    <span className="opacity-80">No build message</span>
+                    <span className="text-sm font-normal opacity-50">
+                      Uploaded 2 months ago by SeebATPley
+                    </span>
+                  </div>
+                )}
+                {item.releaseTrack && (
+                  <Badge variant="secondary" className="shrink-0">
+                    {item.releaseTrack}
+                  </Badge>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+        <Drawer
+          open={isOpen}
+          onOpenChange={(e: boolean) => {
+            setIsOpen(e);
+            setBuild(null);
+          }}
+        >
+          {build && (
+            <DrawerContent className="min-w-[720px] max-w-[940px] w-[50%]">
+              <DrawerHeader className="border-b px-8 py-12">
+                <DrawerTitle>
+                  #{build.number} {build.message || "No build message"}
+                </DrawerTitle>
+                <DrawerDescription>
+                  Uploaded 2 months ago by SeebATPley
+                </DrawerDescription>
+              </DrawerHeader>
+              <div className="px-8">
+                <section className="py-8 border-b border-border">
+                  <h3 className="font-bold text-lg">Run build</h3>
+                  <p className="text-sm opacity-50 mb-4">
+                    You can run a build as a specific user instead of playing
+                    with your Pley account. Enter a user ID or an account email
+                    below to run the build.
+                  </p>
+                  <div className="flex gap-4">
+                    <Select defaultValue={runAs}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="guest">New guest user</SelectItem>
+                        <SelectItem value="email">By user email</SelectItem>
+                        <SelectItem value="id">By user ID</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <Button variant="default">Run build</Button>
+                  </div>
+                </section>
+                <section className="py-8 border-b border-border">
+                  <h3 className="font-bold text-lg">Build description</h3>
+                  <p className="text-sm opacity-50 mb-4">
+                    Description of build used internally.
+                  </p>
+                  <Input
+                    className="max-w-none"
+                    defaultValue={build.message || undefined}
+                  />
+                </section>
+                <section className="py-8 border-b border-border">
+                  <h3 className="font-bold text-lg">Post-processing</h3>
+                  <p className="text-sm opacity-50 mb-4">
+                    Post-processing involves a series of automatic
+                    optimizations, adjustments, and compression to ensure your
+                    game runs seamlessly on the web in all web browsers. As
+                    things change, the build processing pipeline is updated,
+                    adding new optimizations, and stability features.
+                  </p>
+                  <Button variant="default">Re-process with 1.19.3</Button>
+                </section>
+                <section className="py-8 border-b border-border">
+                  <h3 className="font-bold text-lg">Build description</h3>
+                  <p className="text-sm opacity-50 mb-4">
+                    Description of build used internally.
+                  </p>
+                  <Input
+                    className="max-w-none"
+                    defaultValue={build.message || undefined}
+                  />
+                </section>
+                <section className="py-8 border-b border-border">
+                  <h3 className="font-bold text-lg">Post-processing</h3>
+                  <p className="text-sm opacity-50 mb-4">
+                    Post-processing involves a series of automatic
+                    optimizations, adjustments, and compression to ensure your
+                    game runs seamlessly on the web in all web browsers. As
+                    things change, the build processing pipeline is updated,
+                    adding new optimizations, and stability features.
+                  </p>
+                  <Button variant="default">Re-process with 1.19.3</Button>
+                </section>
+              </div>
+              <DrawerFooter className="border-t">footer</DrawerFooter>
+            </DrawerContent>
+          )}
+        </Drawer>
+      </section>
+    </div>
+  );
+}
