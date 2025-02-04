@@ -1,19 +1,38 @@
 "use client";
-import * as React from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { X, ArrowUp } from "lucide-react";
+import { X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
+type Control = { key: string; text: string };
+
+const CONTROLS = [
+  {
+    key: "space",
+    text: "Jump",
+  },
+  {
+    key: "wasd",
+    text: "Move",
+  },
+  {
+    key: "Arrows",
+    text: "Move",
+  },
+  {
+    key: "Esc",
+    text: "Back / Close",
+  },
+  {
+    key: "Enter",
+    text: "Special",
+  },
+];
 export default function GameControls() {
-  const [hasChanges, setHasChanges] = React.useState<boolean>(false);
+  const [key, setKey] = useState<string>("");
+  const [text, setText] = useState<string>("");
+  const [items, setItems] = useState<Control[]>(CONTROLS);
 
   return (
     <div className="flex h-full flex-col-reverse lg:flex-row">
@@ -29,89 +48,56 @@ export default function GameControls() {
           <div className="flex justify-between gap-2">
             <Input
               placeholder="Add key..."
-              onChange={() => setHasChanges(true)}
+              value={key}
+              onChange={(e) => setKey(e.target.value)}
             />
             <Input
-              placeholder="Add instruction..."
-              onChange={() => setHasChanges(true)}
+              placeholder="Add text..."
+              value={text}
+              onChange={(e) => setText(e.target.value)}
             />
-            <Button disabled={!hasChanges}>Add control</Button>
+            <Button
+              disabled={!key || !text}
+              onClick={() => {
+                const newItem = { key, text };
+                setItems([...items, newItem]);
+                setKey("");
+                setText("");
+              }}
+            >
+              Add control
+            </Button>
           </div>
         </div>
         <section>
           <ul className="border-t">
-            <li className="flex items-center justify-between border-b py-3 text-sm">
-              <div className="flex items-center gap-3">
-                <div className="rounded-md bg-secondary px-2 py-1 text-xs font-semibold">
-                  SPACE
-                </div>
-                Jump
-              </div>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
-            <li className="flex items-center justify-between border-b py-3 text-sm">
-              <div className="flex items-center gap-3">
-                <div className="flex gap-1">
-                  <div className="rounded-md bg-secondary px-2 py-1 text-xs font-semibold">
-                    WASD
+            {items.map((item: Control, index: number) => {
+              return (
+                <li
+                  key={index}
+                  className="flex items-center justify-between border-b py-3 text-sm"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-md bg-secondary px-2 py-1 text-xs font-semibold uppercase">
+                      {item.key}
+                    </div>
+                    {item.text}
                   </div>
-                </div>
-                Move
-              </div>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
-            <li className="flex items-center justify-between border-b py-3 text-sm">
-              <div className="flex items-center gap-3">
-                <div className="flex gap-1">
-                  <div className="rounded-md bg-secondary px-2 py-1 text-xs font-semibold">
-                    Arrows
-                  </div>
-                </div>
-                Move
-              </div>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
-            <li className="flex items-center justify-between border-b py-3 text-sm">
-              <div className="flex items-center gap-3">
-                <div className="rounded-md bg-secondary px-2 py-1 text-xs font-semibold">
-                  ESC
-                </div>
-                Back / Close
-              </div>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
-            <li className="flex items-center justify-between border-b py-3 text-sm">
-              <div className="flex items-center gap-3">
-                <div className="rounded-md bg-secondary px-2 py-1 text-xs font-semibold">
-                  P
-                </div>
-                Pause
-              </div>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
-            <li className="flex items-center justify-between border-b py-3 text-sm">
-              <div className="flex items-center gap-3">
-                <div className="rounded-md bg-secondary px-2 py-1 text-xs font-semibold">
-                  ENTER
-                </div>
-                Special
-              </div>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    onClick={() => {
+                      const newList = items.filter((i) => i.key !== item.key);
+                      setItems(newList);
+                    }}
+                  >
+                    <X size={16} />
+                  </Button>
+                </li>
+              );
+            })}
           </ul>
-          {hasChanges && (
+          {items.length !== CONTROLS.length && (
             <div className="mt-8 flex items-center justify-start gap-4">
               <Button>Save changes</Button>
               <span className="text-sm opacity-50">

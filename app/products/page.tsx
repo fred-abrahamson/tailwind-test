@@ -105,9 +105,6 @@ export default function Products() {
               }}
             >
               <div className="flex w-full items-center gap-4">
-                <div className="rounded-md bg-muted p-3">
-                  <ShoppingCart size={16} className="opacity-80" />
-                </div>
                 <div className="flex flex-col gap-2 text-base">
                   <span className="text-sm font-semibold">{item.name}</span>
                   <div className="flex items-center gap-2 text-xs font-normal opacity-80">
