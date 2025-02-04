@@ -39,7 +39,7 @@ body {
   .dark {
     --background: 210 6% 14%;
     --foreground: 0 0% 98%;
-    --card: 240 2% 20%;
+    --card: 220 4% 16%;
     --card-foreground: 0 0% 98%;
     --popover: 210 6% 14%;
     --popover-foreground: 240 2% 20%;
@@ -55,6 +55,7 @@ body {
     --destructive-foreground: 0 0% 98%;
     --border: 200 3% 21%;
     --input: 240 2% 20%;
+    --border-light: 240 2% 10%;
     --ring: 0 0% 83.1%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;

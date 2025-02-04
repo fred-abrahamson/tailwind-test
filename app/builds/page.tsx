@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { Play, CircleCheck, LoaderCircle } from "lucide-react";
+import { Play, Check, Loader, Rocket } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 
@@ -42,35 +42,35 @@ const BUILDS: BuildType[] = [
     value: "36fd4c56-b6e5-11ef-b61f-3f066788534b",
     number: 35,
     releaseTrack: null,
-    processing: 30,
+    processing: 100,
     message: null,
   },
   {
     value: "9a2487d2-b3bf-11ef-a2e4-4370a17f3389",
     number: 34,
     releaseTrack: null,
-    processing: 50,
+    processing: 100,
     message: "test error",
   },
   {
     value: "8cc487fa-aca7-11ef-a93b-eb6881f43ccf",
     number: 33,
     releaseTrack: "Open testing",
-    processing: 80,
+    processing: 100,
     message: "test mute videoplayer",
   },
   {
     value: "640c783e-ab28-11ef-ac94-2b900f3940ba",
     number: 32,
     releaseTrack: null,
-    processing: 80,
+    processing: 100,
     message: "attempt7",
   },
   {
     value: "821ce0fe-ab26-11ef-ac94-0fe74ef8592f",
     number: 31,
     releaseTrack: "Production",
-    processing: 90,
+    processing: 100,
     message: "attempt6",
   },
   {
@@ -292,54 +292,73 @@ export default function Builds() {
 
   return (
     <div>
-      <section className="px-12 py-8 border-b border-border h–[98px]">
-        <div className="max-w-[1240px]">
-          <h1 className="text-xl font-bold">Builds</h1>
-        </div>
-      </section>
       <section className="border-b border-border">
-        <div>
-          <div>
-            {BUILDS.map((item) => (
-              <div
-                key={item.value}
-                className={cn(
-                  "flex gap-8 py-4 px-12 group items-center cursor-pointer hover:bg-muted",
-                  item.value === build?.value && "bg-muted"
-                )}
-                onClick={() => {
-                  setBuild(item);
-                  setIsOpen(true);
-                }}
-              >
-                <div className="text-base font-mono">{item.number}</div>
-                <div className="bg-white/5 rounded-full p-3 group-hover:bg-white/20">
-                  <Play fill="#fff" size={12} />
-                </div>
-                {item.message ? (
-                  <div className="text-base w-full flex flex-col gap-0.5">
-                    <span className="font-semibold">{item.message}</span>
-                    <span className="text-sm font-normal opacity-50">
-                      Uploaded 2 months ago by SeebATPley
-                    </span>
-                  </div>
-                ) : (
-                  <div className="text-base w-full flex flex-col gap-0.5">
-                    <span className="opacity-80">No build message</span>
-                    <span className="text-sm font-normal opacity-50">
-                      Uploaded 2 months ago by SeebATPley
-                    </span>
-                  </div>
-                )}
-                {item.releaseTrack && (
-                  <Badge variant="secondary" className="shrink-0">
-                    {item.releaseTrack}
-                  </Badge>
-                )}
+        <ul className="py-4">
+          {BUILDS.map((item) => (
+            <li
+              key={item.value}
+              className={cn(
+                "group flex cursor-pointer items-center gap-8 px-12 py-4 hover:bg-muted",
+                item.value === build?.value && "bg-muted",
+              )}
+              onClick={() => {
+                setBuild(item);
+                setIsOpen(true);
+              }}
+            >
+              <div className="font-mono text-base text-sm">
+                {item.number.toString().padStart(3, "0")}
               </div>
-            ))}
-          </div>
-        </div>
+
+              {item.releaseTrack ? (
+                <Rocket className="text-green-300" size={20} />
+              ) : (
+                <>
+                  {item.processing < 100 ? (
+                    <Loader size={20} className="text-orange-300" />
+                  ) : (
+                    <Check size={20} className="text-green-300" />
+                  )}
+                </>
+              )}
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white/5 group-hover:bg-white/20">
+                <Play
+                  fill="#fff"
+                  size={12}
+                  className={item.processing < 100 && "opacity-50"}
+                />
+              </div>
+
+              {item.message ? (
+                <div className="flex w-full flex-col gap-2 text-base">
+                  <span className="text-sm font-medium">{item.message}</span>
+                  <span className="text-xs font-normal opacity-50">
+                    Uploaded 2 months ago by SeebATPley
+                  </span>
+                </div>
+              ) : (
+                <div className="flex w-full flex-col gap-2 text-base">
+                  <span className="opacity-80">No build message</span>
+                  <span className="text-xs font-normal opacity-50">
+                    Uploaded 2 months ago by SeebATPley
+                  </span>
+                </div>
+              )}
+
+              {item.releaseTrack && (
+                <Badge variant="green" className="shrink-0">
+                  {item.releaseTrack}
+                </Badge>
+              )}
+
+              {item.processing < 100 && (
+                <Badge variant="orange" className="shrink-0">
+                  Processing
+                </Badge>
+              )}
+            </li>
+          ))}
+        </ul>
         <Drawer
           open={isOpen}
           onOpenChange={(e: boolean) => {
@@ -348,19 +367,20 @@ export default function Builds() {
           }}
         >
           {build && (
-            <DrawerContent className="min-w-[720px] max-w-[940px] w-[50%]">
-              <DrawerHeader className="border-b px-8 py-12">
+            <DrawerContent className="w-[50%] min-w-[480px] max-w-[720px]">
+              <DrawerHeader className="border-b px-8 py-12 pb-8 sm:text-center">
                 <DrawerTitle>
-                  #{build.number} {build.message || "No build message"}
+                  <div className="mb-2">{build.number}</div>
+                  <div>{build.message || "No build message"}</div>
                 </DrawerTitle>
                 <DrawerDescription>
                   Uploaded 2 months ago by SeebATPley
                 </DrawerDescription>
               </DrawerHeader>
               <div className="px-8">
-                <section className="py-8 border-b border-border">
-                  <h3 className="font-bold text-lg">Run build</h3>
-                  <p className="text-sm opacity-50 mb-4">
+                <section className="border-b border-border py-8">
+                  <h3 className="text-lg font-bold">Run build</h3>
+                  <p className="mb-4 text-sm opacity-50">
                     You can run a build as a specific user instead of playing
                     with your Pley account. Enter a user ID or an account email
                     below to run the build.
@@ -379,9 +399,9 @@ export default function Builds() {
                     <Button variant="default">Run build</Button>
                   </div>
                 </section>
-                <section className="py-8 border-b border-border">
-                  <h3 className="font-bold text-lg">Build description</h3>
-                  <p className="text-sm opacity-50 mb-4">
+                <section className="border-b border-border py-8">
+                  <h3 className="text-lg font-bold">Build description</h3>
+                  <p className="mb-4 text-sm opacity-50">
                     Description of build used internally.
                   </p>
                   <Input
@@ -389,9 +409,9 @@ export default function Builds() {
                     defaultValue={build.message || undefined}
                   />
                 </section>
-                <section className="py-8 border-b border-border">
-                  <h3 className="font-bold text-lg">Post-processing</h3>
-                  <p className="text-sm opacity-50 mb-4">
+                <section className="border-b border-border py-8">
+                  <h3 className="text-lg font-bold">Post-processing</h3>
+                  <p className="mb-4 text-sm opacity-50">
                     Post-processing involves a series of automatic
                     optimizations, adjustments, and compression to ensure your
                     game runs seamlessly on the web in all web browsers. As
@@ -400,9 +420,9 @@ export default function Builds() {
                   </p>
                   <Button variant="default">Re-process with 1.19.3</Button>
                 </section>
-                <section className="py-8 border-b border-border">
-                  <h3 className="font-bold text-lg">Build description</h3>
-                  <p className="text-sm opacity-50 mb-4">
+                <section className="border-b border-border py-8">
+                  <h3 className="text-lg font-bold">Build description</h3>
+                  <p className="mb-4 text-sm opacity-50">
                     Description of build used internally.
                   </p>
                   <Input
@@ -410,9 +430,9 @@ export default function Builds() {
                     defaultValue={build.message || undefined}
                   />
                 </section>
-                <section className="py-8 border-b border-border">
-                  <h3 className="font-bold text-lg">Post-processing</h3>
-                  <p className="text-sm opacity-50 mb-4">
+                <section className="border-b border-border py-8">
+                  <h3 className="text-lg font-bold">Post-processing</h3>
+                  <p className="mb-4 text-sm opacity-50">
                     Post-processing involves a series of automatic
                     optimizations, adjustments, and compression to ensure your
                     game runs seamlessly on the web in all web browsers. As

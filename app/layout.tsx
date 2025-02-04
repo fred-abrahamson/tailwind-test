@@ -33,12 +33,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark h-full">
       <body
-        className={`${inter.variable} ${geistMono.variable} antialiased h-full`}
+        className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
       >
-        <div className="bg-background flex gap-4 min-h-full">
+        <section className="fixed left-0 top-0 z-50 h-16 w-full border-b border-border bg-background px-12">
+          <div className="max-w-[1240px]">Header</div>
+        </section>
+        <div className="flex min-h-full gap-4 bg-background">
           <Sidebar />
-          <div className="ml-[320px] w-full">
-            <div className="bg-background min-h-full border-l border-border w-full">
+          <div className="ml-[320px] mt-16 w-full shadow-lg">
+            <div className="h-full min-h-full w-full border-l border-border bg-background">
               {children}
             </div>
           </div>
