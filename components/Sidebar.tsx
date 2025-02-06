@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -153,12 +154,14 @@ export default function Sidebar() {
           }
         })}
       </div>
-      <div className="border-t p-4">
-        <div className="w-full rounded-lg border border-white/10 bg-card px-6 py-5 shadow-lg">
-          <div className="mb-1 font-semibold">Some card</div>
-          <p className="text-sm opacity-50">Some text.</p>
-          <div>or Pley logo</div>
-        </div>
+      <div className="flex items-center justify-center border-t p-6">
+        <Image
+          src="/logo.svg"
+          height={0}
+          width={0}
+          className="h-auto w-16"
+          alt="Pley"
+        />
       </div>
     </div>
   );

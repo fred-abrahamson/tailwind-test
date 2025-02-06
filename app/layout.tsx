@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
-import Sidebar from "@/components/Sidebar";
+import Sidebar from "@/components/sidebar";
+import { Header } from "@/components/header";
 
 import "./globals.css";
 
@@ -35,11 +36,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
       >
-        <section className="fixed left-0 top-0 z-50 h-16 w-full border-b border-border bg-background px-12">
-          <div className="max-w-[1240px]">
-            Add Tilting point logo and game selector
-          </div>
-        </section>
+        <Header />
         <div className="flex min-h-full gap-4 bg-background">
           <Sidebar />
           <div className="ml-[320px] mt-16 w-full">

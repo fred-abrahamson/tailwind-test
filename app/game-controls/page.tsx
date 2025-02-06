@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { ControlsUiShot } from "./ui-shot";
 
 type Control = { key: string; text: string };
 
@@ -108,8 +109,8 @@ export default function GameControls() {
         </section>
       </div>
       <div className="relative flex h-full w-full justify-center overflow-hidden bg-muted p-16 lg:max-h-none lg:items-center">
-        <div className="relative z-10 h-[80%] max-h-[480px] min-h-[480px] w-[80%] max-w-[640px] rounded-xl bg-[#111] p-12 shadow-lg">
-          UI Shot
+        <div className="relative z-10">
+          <ControlsUiShot />
         </div>
         <Image
           src="/restricted-regions.webp"
