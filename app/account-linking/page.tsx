@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { AccountLinkingUIShot } from "./ui-shot";
 
 export default function AccountLinking() {
   const [hasChanges, setHasChanges] = React.useState<boolean>(false);
@@ -15,12 +16,13 @@ export default function AccountLinking() {
         <div>
           <div className="mb-4 text-sm opacity-50">Capabilities</div>
           <h1 className="mb-2 text-xl font-semibold">Account linking</h1>
-          <p className="mb-6 text-sm leading-6 opacity-80">
+          <p className="mb-5 text-sm leading-6 opacity-80">
             Pley Connect is a seamless way of expanding mobile-only users into
             cross-platform users through web. Users easily connect their mobile
             progress to the web, continuing their game progress on their
             desktop.
           </p>
+          <Button variant="secondary">Documentation</Button>
         </div>
         <Separator />
         <section className="py-4">
@@ -59,9 +61,9 @@ export default function AccountLinking() {
           </div>
         )}
       </div>
-      <div className="lg:max-h-auto relative flex h-full max-h-[320px] w-full justify-center overflow-hidden bg-muted p-16 lg:max-h-none lg:items-center">
-        <div className="relative z-10 h-[80%] max-h-[480px] min-h-[480px] w-[80%] max-w-[640px] rounded-xl bg-[#111] p-12 shadow-lg">
-          UI Shot
+      <div className="max-h-auto relative flex h-full w-full justify-center overflow-hidden bg-muted p-16 lg:max-h-none lg:items-center">
+        <div className="relative z-10">
+          <AccountLinkingUIShot />
         </div>
         <Image
           src="/account-linking.webp"

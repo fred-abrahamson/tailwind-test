@@ -15,8 +15,8 @@ export default function PlayerSupport() {
       <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
         <div>
           <div className="mb-4 text-sm opacity-50">Capabilities</div>
-          <h1 className="mb-2 text-xl font-semibold">Custom authentication</h1>
-          <p className="mb-6 text-sm leading-6 opacity-80">
+          <h1 className="mb-2 text-xl font-semibold">Website authentication</h1>
+          <p className="mb-5 text-sm leading-6 opacity-80">
             Integrating your existing user system with Pley allows your users to
             access games without creating separate accounts. By issuing Pley
             Access Tokens and initializing the Pley Web SDK, you can connect
@@ -24,6 +24,7 @@ export default function PlayerSupport() {
             Allocate Game User webhook ensures user progress is properly managed
             across platforms.
           </p>
+          <Button variant="secondary">Documentation</Button>
         </div>
         <Separator />
         <section className="w-full py-4">
@@ -80,7 +81,7 @@ export default function PlayerSupport() {
           )}
         </section>
       </div>
-      <div className="lg:max-h-auto relative flex h-full max-h-[320px] w-full justify-center overflow-hidden bg-muted p-16 lg:max-h-none lg:items-center">
+      <div className="relative flex h-full w-full justify-center overflow-hidden bg-muted p-16 lg:max-h-none lg:items-center">
         <div className="relative z-10 h-[80%] max-h-[480px] min-h-[480px] w-[80%] max-w-[640px] rounded-xl bg-[#111] p-12 shadow-lg">
           UI Shot
         </div>

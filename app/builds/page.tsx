@@ -4,6 +4,15 @@ import { cn } from "@/lib/utils";
 import { Play, Check, Loader, Rocket } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Separator } from "@/components/ui/separator";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { DialogTitle } from "@/components/ui/dialog";
 
 import {
   Drawer,
@@ -27,6 +36,7 @@ type BuildType = {
   number: number;
   releaseTrack: string | null;
   processing: number;
+  size: number;
   message: string | null;
 };
 
@@ -36,13 +46,15 @@ const BUILDS: BuildType[] = [
     number: 36,
     releaseTrack: null,
     processing: 20,
+    size: 10.19,
     message: null,
   },
   {
     value: "36fd4c56-b6e5-11ef-b61f-3f066788534b",
     number: 35,
-    releaseTrack: null,
+    releaseTrack: "Closed testing",
     processing: 100,
+    size: 10.19,
     message: null,
   },
   {
@@ -50,6 +62,7 @@ const BUILDS: BuildType[] = [
     number: 34,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "test error",
   },
   {
@@ -57,6 +70,7 @@ const BUILDS: BuildType[] = [
     number: 33,
     releaseTrack: "Open testing",
     processing: 100,
+    size: 10.19,
     message: "test mute videoplayer",
   },
   {
@@ -64,6 +78,7 @@ const BUILDS: BuildType[] = [
     number: 32,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "attempt7",
   },
   {
@@ -71,6 +86,7 @@ const BUILDS: BuildType[] = [
     number: 31,
     releaseTrack: "Production",
     processing: 100,
+    size: 10.19,
     message: "attempt6",
   },
   {
@@ -78,6 +94,7 @@ const BUILDS: BuildType[] = [
     number: 30,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "attempt5",
   },
   {
@@ -85,6 +102,7 @@ const BUILDS: BuildType[] = [
     number: 29,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "attempt4",
   },
   {
@@ -92,6 +110,7 @@ const BUILDS: BuildType[] = [
     number: 28,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "attempt3",
   },
   {
@@ -99,6 +118,7 @@ const BUILDS: BuildType[] = [
     number: 27,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "attempt2",
   },
   {
@@ -106,6 +126,7 @@ const BUILDS: BuildType[] = [
     number: 26,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "testing videos",
   },
   {
@@ -113,6 +134,7 @@ const BUILDS: BuildType[] = [
     number: 25,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "dev test",
   },
   {
@@ -120,6 +142,7 @@ const BUILDS: BuildType[] = [
     number: 24,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "Factory July 2024 Update",
   },
   {
@@ -127,6 +150,7 @@ const BUILDS: BuildType[] = [
     number: 23,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "Production Release c.3.2.0.7f",
   },
   {
@@ -134,6 +158,7 @@ const BUILDS: BuildType[] = [
     number: 22,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "APK file fix (Prod)",
   },
   {
@@ -141,6 +166,7 @@ const BUILDS: BuildType[] = [
     number: 21,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "Final Test",
   },
   {
@@ -148,6 +174,7 @@ const BUILDS: BuildType[] = [
     number: 20,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "Test again",
   },
   {
@@ -155,6 +182,7 @@ const BUILDS: BuildType[] = [
     number: 19,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "Test upload",
   },
   {
@@ -162,6 +190,7 @@ const BUILDS: BuildType[] = [
     number: 18,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "test 3",
   },
   {
@@ -169,6 +198,7 @@ const BUILDS: BuildType[] = [
     number: 17,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "test 2",
   },
   {
@@ -176,6 +206,7 @@ const BUILDS: BuildType[] = [
     number: 16,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "Test Upload",
   },
   {
@@ -183,6 +214,7 @@ const BUILDS: BuildType[] = [
     number: 15,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "all env",
   },
   {
@@ -190,6 +222,7 @@ const BUILDS: BuildType[] = [
     number: 14,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "Production Release v2",
   },
   {
@@ -197,6 +230,7 @@ const BUILDS: BuildType[] = [
     number: 13,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "Pre-production V.2.1",
   },
   {
@@ -204,6 +238,7 @@ const BUILDS: BuildType[] = [
     number: 12,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "Will's emergency pley connect test (no iaps)",
   },
   {
@@ -211,6 +246,7 @@ const BUILDS: BuildType[] = [
     number: 11,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "bufgix4",
   },
   {
@@ -218,6 +254,7 @@ const BUILDS: BuildType[] = [
     number: 10,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "bugfix3",
   },
   {
@@ -225,6 +262,7 @@ const BUILDS: BuildType[] = [
     number: 9,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "bugfix2",
   },
   {
@@ -232,6 +270,7 @@ const BUILDS: BuildType[] = [
     number: 8,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "bugfix",
   },
   {
@@ -239,6 +278,7 @@ const BUILDS: BuildType[] = [
     number: 7,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "new pley sdk version",
   },
   {
@@ -246,6 +286,7 @@ const BUILDS: BuildType[] = [
     number: 6,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "purchased popup added",
   },
   {
@@ -253,6 +294,7 @@ const BUILDS: BuildType[] = [
     number: 5,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "entitlement consume test",
   },
   {
@@ -260,6 +302,7 @@ const BUILDS: BuildType[] = [
     number: 4,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "consuming bug fix",
   },
   {
@@ -267,6 +310,7 @@ const BUILDS: BuildType[] = [
     number: 3,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "store added",
   },
   {
@@ -274,6 +318,7 @@ const BUILDS: BuildType[] = [
     number: 2,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "splashscreen fix",
   },
   {
@@ -281,6 +326,7 @@ const BUILDS: BuildType[] = [
     number: 1,
     releaseTrack: null,
     processing: 100,
+    size: 10.19,
     message: "gameprogress test",
   },
 ];
@@ -300,6 +346,8 @@ export default function Builds() {
               className={cn(
                 "group flex cursor-pointer items-center gap-8 px-12 py-4 hover:bg-muted",
                 item.value === build?.value && "bg-muted",
+                item.releaseTrack && "bg-muted",
+                item.releaseTrack === "Production" && "bg-green-400/5",
               )}
               onClick={() => {
                 setBuild(item);
@@ -310,51 +358,45 @@ export default function Builds() {
                 {item.number.toString().padStart(3, "0")}
               </div>
 
-              {item.releaseTrack ? (
-                <Rocket className="text-green-300" size={20} />
-              ) : (
-                <>
-                  {item.processing < 100 ? (
-                    <Loader size={20} className="text-orange-300" />
-                  ) : (
-                    <Check size={20} className="text-green-300" />
-                  )}
-                </>
-              )}
-              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white/5 group-hover:bg-white/20">
-                <Play
-                  fill="#fff"
-                  size={12}
-                  className={item.processing < 100 && "opacity-50"}
-                />
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center group-hover:hidden">
+                {item.processing < 100 ? (
+                  <Loader size={18} className="block text-orange-300" />
+                ) : (
+                  <Check
+                    size={18}
+                    className="block text-green-300 group-hover:hidden"
+                  />
+                )}
               </div>
 
-              {item.message ? (
-                <div className="flex w-full flex-col gap-2 text-base">
-                  <span className="text-sm font-medium">{item.message}</span>
-                  <span className="text-xs font-normal opacity-50">
-                    Uploaded 2 months ago by SeebATPley
-                  </span>
+              <div className="hidden h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white text-black group-hover:flex">
+                <Play fill="#000" size={14} />
+              </div>
+
+              <div className="flex w-full flex-col gap-2 text-base">
+                <span
+                  className={cn(
+                    "text-sm font-medium",
+                    !item.message && "opacity-50",
+                  )}
+                >
+                  {item.message || "No build message"}
+                </span>
+                <div className="flex items-center gap-2 text-xs font-normal opacity-80">
+                  <span>{item.size}MB</span>·
+                  <span>Uploaded 2 months ago by SeebATPley</span>
                 </div>
-              ) : (
-                <div className="flex w-full flex-col gap-2 text-base">
-                  <span className="opacity-80">No build message</span>
-                  <span className="text-xs font-normal opacity-50">
-                    Uploaded 2 months ago by SeebATPley
-                  </span>
-                </div>
-              )}
+              </div>
 
               {item.releaseTrack && (
-                <Badge variant="green" className="shrink-0">
+                <div
+                  className={cn(
+                    "flex-shrink-0 text-xs font-semibold",
+                    item.releaseTrack === "Production" && "text-green-400",
+                  )}
+                >
                   {item.releaseTrack}
-                </Badge>
-              )}
-
-              {item.processing < 100 && (
-                <Badge variant="orange" className="shrink-0">
-                  Processing
-                </Badge>
+                </div>
               )}
             </li>
           ))}
@@ -368,18 +410,116 @@ export default function Builds() {
         >
           {build && (
             <DrawerContent className="w-[50%] min-w-[480px] max-w-[720px]">
-              <DrawerHeader className="border-b px-8 py-12 pb-8 sm:text-center">
-                <DrawerTitle>
-                  <div className="mb-2">{build.number}</div>
-                  <div>{build.message || "No build message"}</div>
-                </DrawerTitle>
-                <DrawerDescription>
-                  Uploaded 2 months ago by SeebATPley
-                </DrawerDescription>
+              <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
+                <VisuallyHidden>
+                  <DialogTitle>Build {build.number}</DialogTitle>
+                </VisuallyHidden>
+                <div>
+                  <div className="mb-4 text-sm opacity-50">
+                    Build #{build.number}
+                  </div>
+                  <h1 className="mb-2 text-xl font-semibold">
+                    {build.message || "No build message"}
+                  </h1>
+                  <p className="mb-6 text-sm leading-6 opacity-80">
+                    Uploaded 2 months ago by SeebATPley
+                  </p>
+                </div>
+                <Separator />
+                <section className="py-2">
+                  <h3 className="mb-2 font-semibold">Build message</h3>
+                  <p className="mb-4 text-sm opacity-50">
+                    Description of build used internally.
+                  </p>
+                  <Input
+                    className="max-w-none"
+                    defaultValue={build.message || undefined}
+                  />
+                </section>
+
+                <section className="py-2">
+                  <h3 className="mb-2 font-semibold">Run build</h3>
+                  <p className="mb-4 text-sm opacity-50">
+                    You can run a build as a specific user instead of playing
+                    with your Pley account. Enter a user ID or an account email
+                    below to run the build.
+                  </p>
+                  <div className="mb-6 flex gap-4">
+                    <Select
+                      defaultValue={runAs}
+                      onValueChange={(e) => setRunAs(e)}
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="guest">New guest user</SelectItem>
+                        <SelectItem value="email">By user email</SelectItem>
+                        <SelectItem value="id">By user ID</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <Button variant="default">Run build</Button>
+                  </div>
+                  <ul className="space-y-4 text-sm">
+                    <li>
+                      <span className="opacity-50">Run as </span>
+                      <span className="cursor-pointer font-medium opacity-80 hover:underline hover:opacity-100">
+                        Recent value
+                      </span>
+                    </li>
+                    <li>
+                      <span className="opacity-50">Run as </span>
+                      <span className="cursor-pointer font-medium opacity-80 hover:underline hover:opacity-100">
+                        Recent value
+                      </span>
+                    </li>
+                    <li>
+                      <span className="opacity-50">Run as </span>
+                      <span className="cursor-pointer font-medium opacity-80 hover:underline hover:opacity-100">
+                        Recent value
+                      </span>
+                    </li>
+                  </ul>
+                </section>
+
+                <section className="py-2">
+                  <h3 className="mb-2 font-semibold">Post-processing</h3>
+                  <p className="mb-4 text-sm opacity-50">
+                    Post-processing involves a series of automatic
+                    optimizations, adjustments, and compression to ensure your
+                    game runs seamlessly on the web in all web browsers. As
+                    things change, the build processing pipeline is updated,
+                    adding new optimizations, and stability features.
+                  </p>
+                  <Button variant="secondary">Re-process with 1.19.3</Button>
+                </section>
+              </div>
+            </DrawerContent>
+          )}
+        </Drawer>
+      </section>
+    </div>
+  );
+}
+
+{
+  /* 
+   <DrawerHeader className="border-b px-8 py-12 pb-2">
+                <div>
+                  <div className="mb-4 text-sm opacity-50">
+                    Build #{build.number}
+                  </div>
+                  <h1 className="mb-2 text-xl font-semibold">
+                    {build.message || "No build message"}
+                  </h1>
+                  <p className="mb-6 text-sm leading-6 opacity-80">
+                    Uploaded 2 months ago by SeebATPley
+                  </p>
+                </div>
               </DrawerHeader>
               <div className="px-8">
-                <section className="border-b border-border py-8">
-                  <h3 className="text-lg font-bold">Run build</h3>
+                <section className="py-4">
+                  <h3 className="mb-2 font-semibold">Run build</h3>
                   <p className="mb-4 text-sm opacity-50">
                     You can run a build as a specific user instead of playing
                     with your Pley account. Enter a user ID or an account email
@@ -399,6 +539,7 @@ export default function Builds() {
                     <Button variant="default">Run build</Button>
                   </div>
                 </section>
+
                 <section className="border-b border-border py-8">
                   <h3 className="text-lg font-bold">Build description</h3>
                   <p className="mb-4 text-sm opacity-50">
@@ -443,10 +584,5 @@ export default function Builds() {
                 </section>
               </div>
               <DrawerFooter className="border-t">footer</DrawerFooter>
-            </DrawerContent>
-          )}
-        </Drawer>
-      </section>
-    </div>
-  );
+              */
 }

@@ -2,15 +2,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { X, Lock, Plus } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { X, Lock } from "lucide-react";
+import { PlayerSupportUIShot } from "./ui-shot";
 
 type Category = {
   url: string | null;
@@ -115,9 +110,9 @@ export default function PlayerSupport() {
           )}
         </section>
       </div>
-      <div className="lg:max-h-auto relative flex h-full max-h-[320px] w-full justify-center overflow-hidden bg-muted p-16 lg:max-h-none lg:items-center">
-        <div className="relative z-10 h-[80%] max-h-[480px] min-h-[480px] w-[80%] max-w-[640px] rounded-xl bg-[#111] p-12 shadow-lg">
-          UI Shot
+      <div className="relative flex h-full w-full justify-center overflow-hidden bg-muted p-16 lg:max-h-none lg:items-center">
+        <div className="relative z-10">
+          <PlayerSupportUIShot />
         </div>
         <Image
           src="/player-support.webp"

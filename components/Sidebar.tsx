@@ -15,10 +15,10 @@ import {
   Box,
   ShoppingCart,
   ChartPie,
-  Blocks,
+  Layers,
   ReceiptText,
   Cog,
-  LayoutGrid,
+  Globe,
   ShieldAlert,
 } from "lucide-react";
 
@@ -49,7 +49,7 @@ export default function Sidebar() {
     },
     {
       label: "Distribution",
-      icon: <LayoutGrid size={ICON_SIZE} />,
+      icon: <Globe size={ICON_SIZE} />,
       children: [
         { label: "Websites", path: "/websites" },
         { label: "Discord", path: "/discord" },
@@ -64,14 +64,16 @@ export default function Sidebar() {
     },
     {
       label: "Capabilities",
-      icon: <Blocks size={ICON_SIZE} />,
+      icon: <Layers size={ICON_SIZE} />,
       children: [
         { label: "Account linking", path: "/account-linking" },
         { label: "Rewarded ads", path: "/rewarded-ads" },
-        { label: "Restricted regions", path: "/restricted-regions" },
+        { label: "Restrict regions", path: "/restricted-regions" },
         { label: "Player support", path: "/player-support" },
-        { label: "Custom authentication", path: "/custom-authentication" },
+        { label: "Game resolution", path: "/game-resolution" },
+        { label: "Customize control bar", path: "/control-bar" },
         { label: "Game controls", path: "/game-controls" },
+        { label: "Website authentication", path: "/custom-authentication" },
       ],
     },
     {
@@ -93,8 +95,11 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="w-[320px] h-[100vh] flex flex-col fixed pt-16">
-      <div className="flex flex-col py-6 px-4 h-full">
+    <div className="fixed flex h-[100vh] w-[320px] flex-col pt-16">
+      <div
+        className="flex h-full flex-col overflow-y-scroll px-4 py-6"
+        style={{ scrollbarWidth: "none" }}
+      >
         {navItems.map((item) => {
           if (item.path) {
             return (
@@ -102,8 +107,8 @@ export default function Sidebar() {
                 href={item.path}
                 key={item.path}
                 className={cn(
-                  "px-4 py-3 rounded-md font-medium text-sm flex items-center gap-4",
-                  item.path === pathname && "bg-muted"
+                  "flex items-center gap-4 rounded-md px-4 py-3 text-sm font-medium",
+                  item.path === pathname && "bg-muted",
                 )}
               >
                 <span className="opacity-40">{item.icon}</span>
@@ -132,8 +137,8 @@ export default function Sidebar() {
                           href={child.path}
                           key={child.path}
                           className={cn(
-                            "px-4 py-3 rounded-md text-sm flex items-center gap-4",
-                            child.path === pathname && "bg-muted"
+                            "flex items-center gap-4 rounded-md px-4 py-3 text-sm",
+                            child.path === pathname && "bg-muted",
                           )}
                         >
                           <span className="opacity-0">{item.icon}</span>
@@ -148,10 +153,11 @@ export default function Sidebar() {
           }
         })}
       </div>
-      <div className="p-4 border-t">
-        <div className="rounded-lg w-full shadow-lg py-5 px-6 bg-card border border-white/10">
-          <div className="font-semibold mb-1">Some card</div>
+      <div className="border-t p-4">
+        <div className="w-full rounded-lg border border-white/10 bg-card px-6 py-5 shadow-lg">
+          <div className="mb-1 font-semibold">Some card</div>
           <p className="text-sm opacity-50">Some text.</p>
+          <div>or Pley logo</div>
         </div>
       </div>
     </div>
