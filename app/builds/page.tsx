@@ -339,7 +339,10 @@ export default function Builds() {
   return (
     <div>
       <section className="border-b border-border">
-        <ul className="py-4">
+        <div className="w-full border-b px-12 py-4">
+          <h1 className="font-semibold">Builds</h1>
+        </div>
+        <ul>
           {BUILDS.map((item) => (
             <li
               key={item.value}

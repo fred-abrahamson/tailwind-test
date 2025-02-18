@@ -8,6 +8,23 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
+const MAPPINGS = [
+  {
+    prefix: "/autogunassets",
+    target: "autogun-prod-assets-ipv6.p1.autogunheroestech.com",
+  },
+  { prefix: "/googleanalytics", target: "region1.google-analytics.com" },
+  { prefix: "/firebasewebconfig", target: "firebase.googleapis.com" },
+  { prefix: "/sentry", target: "o1064059.ingest.sentry.io" },
+  { prefix: "/airbridge", target: "core.airbridge.io" },
+  {
+    prefix: "/gameserver",
+    target: "autogun-prod.p1.autogunheroestech.com:9380",
+  },
+  { prefix: "/airbridgesdk", target: "sdk.airbridge.io" },
+  { prefix: "/firebaseauth", target: "firebaseinstallations.googleapis.com" },
+];
+
 export default function PlayerSupport() {
   const [hasChanges, setHasChanges] = React.useState<boolean>(false);
   const [hasAccess, setHasAccess] = React.useState<boolean>(false);
@@ -19,7 +36,7 @@ export default function PlayerSupport() {
           <div className="mb-4 text-sm opacity-50">Distribution</div>
           <h1 className="mb-2 text-xl font-semibold">Discord</h1>
           <p className="mb-5 text-sm leading-6 opacity-80">
-            Allow your game to be run as a Discord activiy. This feature needs
+            Allow your game to be run as a Discord activity. This feature needs
             to be manually enabled by the Pley team. Contact us to request
             access.
           </p>
@@ -88,72 +105,23 @@ export default function PlayerSupport() {
             <Button variant="secondary">Add mapping</Button>
           </div>
           <ul className="my-4 w-full border-t">
-            <li className="flex items-center gap-2 border-b py-3 text-sm">
-              <span>/autogunassets</span>
-              <span className="w-full opacity-50">
-                autogun-prod-assets-ipv6.p1.autogunheroestech.com
-              </span>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
-            <li className="flex items-center gap-2 border-b py-3 text-sm">
-              <span>/googleanalytics</span>
-              <span className="w-full opacity-50">
-                region1.google-analytics.com
-              </span>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
-            <li className="flex items-center gap-2 border-b py-3 text-sm">
-              <span>/firebasewebconfig</span>
-              <span className="w-full opacity-50">firebase.googleapis.com</span>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
-            <li className="flex items-center gap-2 border-b py-3 text-sm">
-              <span>/sentry</span>
-              <span className="w-full opacity-50">
-                o1064059.ingest.sentry.io
-              </span>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
-            <li className="flex items-center gap-2 border-b py-3 text-sm">
-              <span>/airbridge</span>
-              <span className="w-full opacity-50">core.airbridge.io</span>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
-            <li className="flex items-center gap-2 border-b py-3 text-sm">
-              <span>/gameserver</span>
-              <span className="w-full opacity-50">
-                autogun-prod.p1.autogunheroestech.com:9380
-              </span>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
-            <li className="flex items-center gap-2 border-b py-3 text-sm">
-              <span>/airbridgesdk</span>
-              <span className="w-full opacity-50">sdk.airbridge.io</span>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
-            <li className="flex items-center gap-2 border-b py-3 text-sm">
-              <span>/firebaseauth</span>
-              <span className="w-full opacity-50">
-                firebaseinstallations.googleapis.com
-              </span>
-              <Button size="icon" variant="ghost">
-                <X size={16} />
-              </Button>
-            </li>
+            {MAPPINGS.map((mapping, index) => (
+              <li
+                key={index}
+                className="flex items-center justify-between border-b border-border py-4"
+              >
+                <div className="flex flex-col gap-1.5 text-sm font-medium">
+                  {mapping.prefix}
+                  <span className="text-xs font-normal opacity-70">
+                    {mapping.target}
+                  </span>
+                </div>
+
+                <Button size="icon" variant="ghost">
+                  <X size={16} />
+                </Button>
+              </li>
+            ))}
           </ul>
           {hasChanges && (
             <div className="mt-8 flex justify-start gap-2">

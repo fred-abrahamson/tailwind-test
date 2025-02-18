@@ -78,7 +78,7 @@ export default function PlayerSupport() {
               return (
                 <li
                   key={category.label}
-                  className="flex items-center justify-between border-b border-border py-3"
+                  className="flex items-center justify-between border-b border-border py-4"
                 >
                   <div className="flex flex-col gap-1.5 text-sm font-medium">
                     {category.label}

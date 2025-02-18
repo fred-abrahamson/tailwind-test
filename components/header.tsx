@@ -1,6 +1,7 @@
 import Dropdown from "@/components/dropdown";
 import { ChevronLeft, CircleHelp, ScrollText, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const games = [
   {
@@ -61,38 +62,24 @@ export const Header = () => {
             showArrow={false}
             className="h-9 px-3 pr-4"
           />
+          <span>/</span>
+          <Dropdown
+            list={games}
+            selected={"1"}
+            showArrow={false}
+            className="h-9 px-3 pr-4"
+            align="center"
+          />
         </div>
       </div>
-      <div className="w-full text-center">
-        <Dropdown
-          list={games}
-          selected={"1"}
-          showArrow={false}
-          className="h-9 px-3 pr-4"
-          align="center"
+      <div className="flex w-full justify-end text-right">
+        <Image
+          src="/logo.svg"
+          height={0}
+          width={0}
+          className="max-h-7 w-auto"
+          alt="Pley"
         />
-      </div>
-      <div className="w-full text-right">
-        <div className="max-w-content inline-flex items-center gap-6">
-          <div className="flex gap-2 border-r px-4">
-            <Button size="icon" variant="ghost" className="h-8 w-8">
-              <CircleHelp size={24} />
-            </Button>
-            <Button size="icon" variant="ghost" className="h-8 w-8">
-              <Wrench size={24} />
-            </Button>
-            <Button size="icon" variant="ghost" className="h-8 w-8">
-              <ScrollText size={24} />
-            </Button>
-          </div>
-          <Button
-            size="icon"
-            variant="ghost"
-            className="h-8 w-8 bg-orange-900 text-xs"
-          >
-            FA
-          </Button>
-        </div>
       </div>
     </div>
   );

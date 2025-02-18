@@ -88,11 +88,10 @@ export default function Products() {
 
   return (
     <div>
-      <section className="border-b border-border px-12 py-5">
-        <div className="flex items-center justify-between">
-          Filters<Button>Add product</Button>
-        </div>
-      </section>
+      <div className="flex w-full items-center justify-between border-b px-12 py-4">
+        <h1 className="font-semibold">Products / Filters</h1>
+        <Button>Add product</Button>
+      </div>
       <section className="border-b border-border">
         <ul className="py-4">
           {PRODUCTS.map((item) => (

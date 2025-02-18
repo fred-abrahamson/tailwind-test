@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -49,6 +48,21 @@ export default function Sidebar() {
       ],
     },
     {
+      label: "Analytics",
+      path: "/analytics",
+      icon: <ChartPie size={ICON_SIZE} />,
+    },
+    {
+      label: "Finance reports",
+      path: "/finance-reports",
+      icon: <ReceiptText size={ICON_SIZE} />,
+    },
+    {
+      label: "Crash log",
+      path: "crash-log",
+      icon: <ShieldAlert size={ICON_SIZE} />,
+    },
+    {
       label: "Distribution",
       icon: <Globe size={ICON_SIZE} />,
       children: [
@@ -73,24 +87,9 @@ export default function Sidebar() {
         { label: "Player support", path: "/player-support" },
         { label: "Game resolution", path: "/game-resolution" },
         { label: "Customize control bar", path: "/control-bar" },
-        { label: "Game controls", path: "/game-controls" },
+        { label: "Display controls", path: "/game-controls" },
         { label: "Website authentication", path: "/custom-authentication" },
       ],
-    },
-    {
-      label: "Analytics",
-      path: "/analytics",
-      icon: <ChartPie size={ICON_SIZE} />,
-    },
-    {
-      label: "Finance reports",
-      path: "/finance-reports",
-      icon: <ReceiptText size={ICON_SIZE} />,
-    },
-    {
-      label: "Crash log",
-      path: "crash-log",
-      icon: <ShieldAlert size={ICON_SIZE} />,
     },
     { label: "Settings", path: "/settings", icon: <Cog size={ICON_SIZE} /> },
   ];
@@ -155,13 +154,7 @@ export default function Sidebar() {
         })}
       </div>
       <div className="flex items-center justify-center border-t p-6">
-        <Image
-          src="/logo.svg"
-          height={0}
-          width={0}
-          className="h-auto w-16"
-          alt="Pley"
-        />
+        Announments
       </div>
     </div>
   );

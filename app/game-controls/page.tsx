@@ -40,7 +40,7 @@ export default function GameControls() {
       <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
         <div>
           <div className="mb-4 text-sm opacity-50">Capabilities</div>
-          <h1 className="mb-2 text-xl font-semibold">Game controls</h1>
+          <h1 className="mb-2 text-xl font-semibold">Display controls</h1>
           <p className="mb-6 text-sm leading-6 opacity-80">
             Allow your players to fully leverage the web playing experience. Add
             your game's keyboard control scheme and they will be displayed in
