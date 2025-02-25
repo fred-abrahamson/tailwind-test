@@ -3,7 +3,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
 import { X, Lock } from "lucide-react";
 import { PlayerSupportUIShot } from "./ui-shot";
 
@@ -58,7 +57,7 @@ export default function PlayerSupport() {
             />
             <Button
               onClick={() => {
-                let newCategory = {
+                const newCategory = {
                   label,
                   url,
                 };

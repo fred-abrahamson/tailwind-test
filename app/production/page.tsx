@@ -1,15 +1,7 @@
 "use client";
 import * as React from "react";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { X } from "lucide-react";
+
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -17,7 +9,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function Production() {
-  const [hasChanges, setHasChanges] = React.useState<boolean>(false);
   const [checked, setChecked] = React.useState<boolean>(false);
 
   return (
@@ -52,16 +43,8 @@ export default function Production() {
           </div>
           {checked && (
             <div className="mt-8 flex flex-col gap-4">
-              <Input
-                placeholder="Placeholder..."
-                className="max-w-none"
-                onChange={() => setHasChanges(true)}
-              />
-              <Textarea
-                placeholder="Placeholder..."
-                className="max-w-none"
-                onChange={() => setHasChanges(true)}
-              />
+              <Input placeholder="Placeholder..." className="max-w-none" />
+              <Textarea placeholder="Placeholder..." className="max-w-none" />
               <div className="mt-4 flex items-center justify-start gap-4">
                 <Button>Save changes</Button>
                 <span className="text-sm opacity-50">

@@ -1,9 +1,6 @@
 "use client";
 import * as React from "react";
-import { cn } from "@/lib/utils";
-import { Play, ShoppingCart, LoaderCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-
 import { Button } from "@/components/ui/button";
 
 type ProductType = {
@@ -82,10 +79,6 @@ const PRODUCTS: ProductType[] = [
   },
 ];
 export default function Products() {
-  const [build, setBuild] = React.useState<BuildType | null>(null);
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const [runAs, setRunAs] = React.useState<"guest" | "email" | "id">("guest");
-
   return (
     <div>
       <div className="flex w-full items-center justify-between border-b px-12 py-4">
@@ -98,10 +91,6 @@ export default function Products() {
             <li
               key={item.id}
               className="group flex cursor-pointer items-center gap-8 px-12 py-4 hover:bg-muted"
-              onClick={() => {
-                setBuild(item);
-                setIsOpen(true);
-              }}
             >
               <div className="flex w-full items-center gap-4">
                 <div className="flex flex-col gap-2 text-base">

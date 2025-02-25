@@ -1,27 +1,12 @@
 "use client";
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { Play, Check, Loader, Rocket } from "lucide-react";
+import { Play, Check, Loader } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { Separator } from "@/components/ui/separator";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { DialogTitle } from "@/components/ui/dialog";
-
-import {
-  Drawer,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
+import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -450,7 +435,9 @@ export default function Builds() {
                   <div className="mb-6 flex gap-4">
                     <Select
                       defaultValue={runAs}
-                      onValueChange={(e) => setRunAs(e)}
+                      onValueChange={(e: "guest" | "email" | "id") =>
+                        setRunAs(e)
+                      }
                     >
                       <SelectTrigger>
                         <SelectValue />

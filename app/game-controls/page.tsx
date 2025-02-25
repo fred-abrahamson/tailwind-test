@@ -42,9 +42,9 @@ export default function GameControls() {
           <div className="mb-4 text-sm opacity-50">Capabilities</div>
           <h1 className="mb-2 text-xl font-semibold">Display controls</h1>
           <p className="mb-6 text-sm leading-6 opacity-80">
-            Allow your players to fully leverage the web playing experience. Add
+            {`Allow your players to fully leverage the web playing experience. Add
             your game's keyboard control scheme and they will be displayed in
-            the web playable.
+            the web playable.`}
           </p>
           <div className="flex justify-between gap-2">
             <Input

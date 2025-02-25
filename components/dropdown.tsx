@@ -42,7 +42,7 @@ export default function Dropdown({
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(selected);
 
-  let selectedItem = list.find((item) => item.id === value);
+  const selectedItem = list.find((item) => item.id === value);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -75,9 +75,8 @@ export default function Dropdown({
                   value={item.id}
                   className="h-auto px-2 py-2"
                   onSelect={(currentValue: string) => {
-                    setValue(
-                      currentValue === item.id ? item.id : currentValue.id,
-                    );
+                    console.log({ currentValue });
+                    setValue(currentValue === item.id ? item.id : currentValue);
                     setOpen(false);
                   }}
                 >

@@ -334,22 +334,19 @@ export default function CrashLog() {
   const [selected, setSelected] = React.useState<LogItemType | null>(null);
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const [showDetailed, setShowDetailed] = React.useState<boolean>(false);
-  const [tab, setTab] = React.useState<string>("production");
+  //  const [tab, setTab] = React.useState<string>("production");
   return (
     <div>
       <section className="border-b border-border">
         <Tabs defaultValue="production">
           <div className="flex w-full justify-center p-4 text-center">
-            <TabsList
-              className="grid max-w-max grid-cols-3"
-              onChange={(e) => setTab(e)}
-            >
+            <TabsList className="grid max-w-max grid-cols-3">
               <TabsTrigger value="production">Production</TabsTrigger>
               <TabsTrigger value="open_testing">Open testing</TabsTrigger>
               <TabsTrigger value="closed_testing">Closed testing</TabsTrigger>
             </TabsList>
           </div>
-          <TabsContent value={tab}>
+          <TabsContent value="production">
             <div className="min-h-64 w-full border-b px-12 py-4">Graph</div>
             <ul className="py-4">
               {LOG_LIST.filter(
