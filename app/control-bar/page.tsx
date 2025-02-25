@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { ControlBarShot } from "./ui-shot";
 
 export default function ControlBar() {
   const [hasChanges, setHasChanges] = React.useState<boolean>(false);
@@ -79,10 +80,8 @@ export default function ControlBar() {
           </div>
         )}
       </div>
-      <div className="relative flex h-full w-full justify-center overflow-hidden bg-muted p-16 lg:max-h-none lg:items-center">
-        <div className="relative z-10 h-[80%] max-h-[480px] min-h-[480px] w-[80%] max-w-[640px] rounded-xl bg-[#111] p-12 shadow-lg">
-          UI Shot
-        </div>
+      <div className="relative flex h-full w-full justify-center overflow-hidden bg-muted p-8 lg:max-h-none lg:items-center">
+        <ControlBarShot />
         <Image
           src="/rewarded-ads.webp"
           height="0"

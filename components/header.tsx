@@ -50,7 +50,7 @@ const orgs = [
 
 export const Header = () => {
   return (
-    <div className="text-sn fixed left-0 top-0 z-50 flex h-16 w-full items-center justify-between border-b bg-background px-8">
+    <div className="text-sn fixed left-0 top-0 z-50 flex h-16 w-full items-center justify-between border-b bg-background px-6">
       <div className="w-full">
         <div className="max-w-content inline-flex items-center gap-2">
           <Button size="icon" variant="secondary" className="h-8 w-8">
@@ -72,7 +72,7 @@ export const Header = () => {
           />
         </div>
       </div>
-      <div className="flex w-full justify-end text-right">
+      <div className="flex w-full justify-center">
         <Image
           src="/logo.svg"
           height={0}
@@ -80,6 +80,28 @@ export const Header = () => {
           className="max-h-7 w-auto"
           alt="Pley"
         />
+      </div>
+      <div className="w-full text-right">
+        <div className="max-w-content inline-flex items-center gap-6">
+          <div className="flex gap-2 border-r px-4">
+            <Button size="icon" variant="ghost" className="h-8 w-8">
+              <CircleHelp size={24} />
+            </Button>
+            <Button size="icon" variant="ghost" className="h-8 w-8">
+              <Wrench size={24} />
+            </Button>
+            <Button size="icon" variant="ghost" className="h-8 w-8">
+              <ScrollText size={24} />
+            </Button>
+          </div>
+          <Button
+            size="icon"
+            variant="ghost"
+            className="h-8 w-8 bg-orange-900 text-xs"
+          >
+            FA
+          </Button>
+        </div>
       </div>
     </div>
   );
