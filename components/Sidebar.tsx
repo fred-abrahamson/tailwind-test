@@ -22,7 +22,7 @@ import {
   ShieldAlert,
 } from "lucide-react";
 
-export default function Sidebar() {
+export const Sidebar = () => {
   const pathname = usePathname();
 
   const ICON_SIZE = 16;
@@ -66,7 +66,8 @@ export default function Sidebar() {
       label: "Distribution",
       icon: <Globe size={ICON_SIZE} />,
       children: [
-        { label: "Websites", path: "/websites" },
+        { label: "Gamesite", path: "/gamesite" },
+        { label: "Custom website", path: "/websites" },
         { label: "Discord", path: "/discord" },
         { label: "CrazyGames", path: "/crazygames" },
         { label: "Xsolla Mall", path: "/xsolla" },
@@ -158,4 +159,4 @@ export default function Sidebar() {
       </div>
     </div>
   );
-}
+};
