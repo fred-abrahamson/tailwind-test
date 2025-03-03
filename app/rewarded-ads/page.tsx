@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
+import { UIShot } from "./ui-shot";
 
 export default function RewardedAds() {
   const [hasChanges, setHasChanges] = React.useState<boolean>(false);
@@ -24,8 +25,8 @@ export default function RewardedAds() {
         <section className="py-4">
           <h3 className="mb-2 font-semibold">Get started</h3>
           <p className="mb-4 text-sm opacity-50">
-            How are changes affecting the game, what needs to be done by the
-            developers in the game or on the website.
+            When enabling this feature the Playable will load the Google Adsense
+            script and ask the player for the necessary consent.
           </p>
           <div className="flex items-center gap-3 text-sm font-medium">
             <Checkbox onCheckedChange={() => setHasChanges(true)} />
@@ -41,9 +42,9 @@ export default function RewardedAds() {
           </div>
         )}
       </div>
-      <div className="relative flex h-full w-full justify-center overflow-hidden bg-muted p-16 lg:max-h-none lg:items-center">
-        <div className="relative z-10 h-[80%] max-h-[480px] min-h-[480px] w-[80%] max-w-[640px] rounded-xl bg-[#111] p-12 shadow-lg">
-          UI Shot
+      <div className="max-h-auto relative flex h-full w-full justify-center overflow-hidden bg-muted p-16 lg:max-h-none lg:items-center">
+        <div className="relative z-10">
+          <UIShot />
         </div>
         <Image
           src="/rewarded-ads.webp"

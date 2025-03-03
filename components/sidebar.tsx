@@ -86,7 +86,6 @@ export const Sidebar = () => {
         { label: "Rewarded ads", path: "/rewarded-ads" },
         { label: "Restrict regions", path: "/restricted-regions" },
         { label: "Player support", path: "/player-support" },
-        { label: "Game resolution", path: "/game-resolution" },
         { label: "Customize control bar", path: "/control-bar" },
         { label: "Display controls", path: "/game-controls" },
         { label: "Website authentication", path: "/custom-authentication" },
