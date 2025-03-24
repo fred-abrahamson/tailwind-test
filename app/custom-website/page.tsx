@@ -11,10 +11,10 @@ export default function PlayerSupport() {
   const [hasChanges, setHasChanges] = React.useState<boolean>(false);
 
   return (
-    <div className="flex h-full flex-col-reverse lg:flex-row">
+    <div className="flex h-full flex-col-reverse xl:flex-row">
       <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
         <div>
-          <div className="mb-4 text-sm opacity-50">Capabilities</div>
+          <div className="mb-4 text-sm opacity-50">Distribution</div>
           <h1 className="mb-2 text-xl font-semibold">Website authentication</h1>
           <p className="mb-5 text-sm leading-6 opacity-80">
             Integrating your existing user system with Pley allows your users to
@@ -81,7 +81,7 @@ export default function PlayerSupport() {
           )}
         </section>
       </div>
-      <div className="relative flex h-full w-full justify-center overflow-hidden bg-muted p-16 lg:max-h-none lg:items-center">
+      <div className="relative flex h-full w-full justify-center overflow-hidden bg-muted p-16 xl:max-h-none xl:items-center">
         <div className="relative z-10 h-[80%] max-h-[480px] min-h-[480px] w-[80%] max-w-[640px] rounded-xl bg-[#111] p-12 shadow-lg">
           UI Shot
         </div>

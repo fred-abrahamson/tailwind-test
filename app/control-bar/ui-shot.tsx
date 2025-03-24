@@ -7,11 +7,32 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { type Position, type Color } from "./page";
+import { cn } from "@/lib/utils";
 
-export const ControlBarShot = () => {
+type Props = {
+  position: Position;
+  color: Color;
+};
+
+export const ControlBarShot = ({ position, color }: Props) => {
   return (
-    <div className="z-10 flex h-full max-h-[480px] w-full items-end justify-end overflow-hidden rounded-lg bg-muted shadow-lg">
-      <div className="flex w-full justify-between bg-[#111] p-4 shadow-lg">
+    <div
+      className={cn(
+        "z-10 flex h-full max-h-[480px] w-full overflow-hidden rounded-lg bg-muted shadow-lg",
+        position === "bottom" && "items-end",
+        position === "top" && "items-start",
+      )}
+    >
+      <div
+        className={cn(
+          "flex w-full justify-between p-4",
+          `bg-[${color}]`,
+          position === "hidden" && "hidden",
+          position === "bottom" && "border-t",
+          position === "top" && "border-b",
+        )}
+      >
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="icon">
             <ChevronLeft />

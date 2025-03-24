@@ -36,7 +36,7 @@ export default function GameControls() {
   const [items, setItems] = useState<Control[]>(CONTROLS);
 
   return (
-    <div className="flex h-full flex-col-reverse lg:flex-row">
+    <div className="flex h-full flex-col-reverse xl:flex-row">
       <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
         <div>
           <div className="mb-4 text-sm opacity-50">Capabilities</div>
@@ -108,7 +108,7 @@ export default function GameControls() {
           )}
         </section>
       </div>
-      <div className="relative flex h-full w-full justify-center overflow-hidden bg-muted p-16 lg:max-h-none lg:items-center">
+      <div className="relative flex h-full w-full justify-center overflow-hidden bg-muted p-16 xl:max-h-none xl:items-center">
         <div className="relative z-10">
           <ControlsUiShot />
         </div>

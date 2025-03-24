@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { DialogTitle } from "@/components/ui/dialog";
-
+import { ChevronRight } from "lucide-react";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -339,11 +339,28 @@ export default function CrashLog() {
     <div>
       <section className="border-b border-border">
         <Tabs defaultValue="production">
-          <div className="flex w-full justify-center p-4 text-center">
-            <TabsList className="grid max-w-max grid-cols-3">
-              <TabsTrigger value="production">Production</TabsTrigger>
-              <TabsTrigger value="open_testing">Open testing</TabsTrigger>
-              <TabsTrigger value="closed_testing">Closed testing</TabsTrigger>
+          <div className="flex w-full items-center gap-2 border-b px-12 py-4">
+            <h1 className="font-semibold">Crash log</h1>
+            <ChevronRight size={16} className="opacity-50" />
+            <TabsList className="bg-0 flex items-center gap-4 p-0">
+              <TabsTrigger
+                value="production"
+                className="p-0 text-base font-semibold"
+              >
+                Production
+              </TabsTrigger>
+              <TabsTrigger
+                value="open_testing"
+                className="p-0 text-base font-semibold"
+              >
+                Open testing
+              </TabsTrigger>
+              <TabsTrigger
+                value="closed_testing"
+                className="p-0 text-base font-semibold"
+              >
+                Closed testing
+              </TabsTrigger>
             </TabsList>
           </div>
           <TabsContent value="production">

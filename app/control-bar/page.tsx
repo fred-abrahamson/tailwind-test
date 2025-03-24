@@ -1,5 +1,5 @@
 "use client";
-import * as React from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
@@ -12,12 +12,19 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { ControlBarShot } from "./ui-shot";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+
+export type Position = "top" | "bottom" | "hidden";
+export type Color = "#000000" | "#0b132b" | "#260701" | "#312244";
 
 export default function ControlBar() {
-  const [hasChanges, setHasChanges] = React.useState<boolean>(false);
+  const [hasChanges, setHasChanges] = useState<boolean>(false);
+  const [position, setPosition] = useState<Position>("bottom");
+  const [color, setColor] = useState<Color>("#000000");
 
   return (
-    <div className="flex h-full flex-col-reverse lg:flex-row">
+    <div className="flex h-full flex-col-reverse xl:flex-row">
       <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
         <div>
           <div className="mb-4 text-sm opacity-50">Capabilities</div>
@@ -32,7 +39,10 @@ export default function ControlBar() {
           <p className="mb-4 text-sm opacity-50">
             Choose where the control bar should be placed.
           </p>
-          <Select defaultValue={"bottom"}>
+          <Select
+            defaultValue={position}
+            onValueChange={(e: Position) => setPosition(e)}
+          >
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
@@ -42,8 +52,20 @@ export default function ControlBar() {
               <SelectItem value="hidden">Hidden</SelectItem>
             </SelectContent>
           </Select>
+          {position === "hidden" && (
+            <p className="mt-4 text-sm opacity-50">
+              Build your own control bar using the{" "}
+              <Link
+                href="https://docs.pley.com/docs/integrate-playable"
+                className="underline"
+              >
+                web SDK documentation
+              </Link>
+              .
+            </p>
+          )}
         </section>
-        <section className="py-4">
+        <section className={cn("py-4", position === "hidden" && "opacity-50")}>
           <h3 className="mb-2 font-semibold">Home page URL</h3>
           <p className="mb-4 text-sm opacity-50">
             Add a back button to the control bar to allow users to navigate from
@@ -53,21 +75,27 @@ export default function ControlBar() {
             className="max-w-none"
             placeholder="Enter URL..."
             onChange={() => setHasChanges(true)}
+            disabled={position === "hidden"}
           />
         </section>
-        <section className="py-4">
-          <h3 className="mb-2 font-semibold">Background color</h3>
+        <section className={cn("py-4", position === "hidden" && "opacity-50")}>
+          <h3 className="mb-2 font-semibold">Theme</h3>
           <p className="mb-4 text-sm opacity-50">
             Set a background color for the control bar to match your game.
           </p>
-          <Select defaultValue={"black"}>
+          <Select
+            defaultValue={"#000000"}
+            onValueChange={(e: Color) => setColor(e)}
+            disabled={position === "hidden"}
+          >
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="black">Black</SelectItem>
-              <SelectItem value="green">Dark green</SelectItem>
-              <SelectItem value="blue">Dark blue</SelectItem>
+              <SelectItem value="#000000">Alt 1</SelectItem>
+              <SelectItem value="#0b132b">Alt 2</SelectItem>
+              <SelectItem value="#260701">Alt 3</SelectItem>
+              <SelectItem value="#312244">Alt 4</SelectItem>
             </SelectContent>
           </Select>
         </section>
@@ -80,8 +108,8 @@ export default function ControlBar() {
           </div>
         )}
       </div>
-      <div className="relative flex h-full w-full justify-center overflow-hidden bg-muted p-8 lg:max-h-none lg:items-center">
-        <ControlBarShot />
+      <div className="relative flex h-full w-full justify-center overflow-hidden bg-muted p-8 xl:max-h-none xl:items-center">
+        <ControlBarShot position={position} color={color} />
         <Image
           src="/rewarded-ads.webp"
           height="0"

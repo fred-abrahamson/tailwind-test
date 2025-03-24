@@ -1,7 +1,8 @@
 "use client";
-import * as React from "react";
-import { Badge } from "@/components/ui/badge";
+import { useState } from "react";
+import { Check, X, ChevronRight, RefreshCcw, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 type ProductType = {
   name: string;
@@ -79,13 +80,51 @@ const PRODUCTS: ProductType[] = [
   },
 ];
 export default function Products() {
+  const [showPrompt, setShowPrompt] = useState<boolean>(true);
   return (
     <div>
       <div className="flex w-full items-center justify-between border-b px-12 py-4">
-        <h1 className="font-semibold">Products / Filters</h1>
-        <Button>Add product</Button>
+        <div className="flex items-center gap-4">
+          <h1 className="font-semibold">Products</h1>
+          <ChevronRight size={16} className="opacity-50" />
+          <div className="font-semibold">Filters</div>
+        </div>
+        <div className="flex gap-2">
+          <Button variant="secondary">Add product</Button>
+          <Button>Import products</Button>
+        </div>
       </div>
       <section className="border-b border-border">
+        {showPrompt && (
+          <div className="flex items-center justify-between border-b px-12 py-8">
+            <div>
+              <h3 className="mb-2 font-semibold">
+                7 products are missing Discord SKUs
+              </h3>
+              <p className="text-sm opacity-80">
+                {`Add the SKUs in Discord’s Developer portal or update the SKU to
+            match the product name.`}
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <Button
+                size="icon"
+                variant="secondary"
+                onClick={() => setShowPrompt(false)}
+              >
+                <Filter />
+              </Button>
+              <Button
+                size="icon"
+                variant="secondary"
+                onClick={() => setShowPrompt(false)}
+              >
+                <RefreshCcw />
+              </Button>
+              <Button variant="secondary">Automatch</Button>
+            </div>
+          </div>
+        )}
         <ul className="py-4">
           {PRODUCTS.map((item) => (
             <li
@@ -100,8 +139,21 @@ export default function Products() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-shrink-0 items-center gap-1">
-                <Badge variant="outline">is matched</Badge>
+              <div className="flex w-full justify-end gap-2">
+                <Badge variant="outline">
+                  {item.matched ? (
+                    <span className="flex items-center gap-1">
+                      <Check size={14} className="text-green-300" />
+                      Discord SKU
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-1">
+                      <X size={14} className="text-red-500" />
+                      Discord SKU
+                    </span>
+                  )}
+                </Badge>
+                <Badge variant="secondary">${item.price}</Badge>
               </div>
             </li>
           ))}

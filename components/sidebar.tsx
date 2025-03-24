@@ -20,6 +20,7 @@ import {
   Cog,
   Globe,
   ShieldAlert,
+  Check,
 } from "lucide-react";
 
 export const Sidebar = () => {
@@ -39,12 +40,65 @@ export const Sidebar = () => {
       icon: <Box size={ICON_SIZE} />,
     },
     {
+      label: "Products",
+      path: "/products",
+      icon: <ShoppingCart size={ICON_SIZE} />,
+    },
+    {
       label: "Release tracks",
       icon: <Rocket size={ICON_SIZE} />,
       children: [
-        { label: "Production", path: "/production" },
-        { label: "Open testing", path: "/open-testing" },
-        { label: "Closed testing", path: "/closed-testing" },
+        {
+          label: "Production",
+          path: "/production",
+          icon: <Check size={ICON_SIZE} />,
+        },
+        {
+          label: "Open testing",
+          path: "/open-testing",
+          icon: <Check size={ICON_SIZE} />,
+        },
+        {
+          label: "Closed testing",
+          path: "/closed-testing",
+          icon: <Check size={ICON_SIZE} />,
+        },
+      ],
+    },
+    {
+      label: "Distribution",
+      icon: <Globe size={ICON_SIZE} />,
+      children: [
+        {
+          label: "Gamesite",
+          path: "/gamesite",
+          icon: <Check size={ICON_SIZE} />,
+        },
+        {
+          label: "Custom website",
+          path: "/custom-website",
+          icon: <Check size={ICON_SIZE} />,
+        },
+        {
+          label: "Discord",
+          path: "/discord",
+          icon: <Check size={ICON_SIZE} />,
+        },
+        {
+          label: "CrazyGames",
+          path: "/crazygames",
+          icon: <Check size={ICON_SIZE} />,
+        },
+        {
+          label: "Xsolla Mall",
+          path: "/xsolla",
+          icon: <Check size={ICON_SIZE} />,
+        },
+        {
+          label: "Yandex Games",
+          path: "/yandex",
+          icon: <Check size={ICON_SIZE} />,
+        },
       ],
     },
     {
@@ -53,42 +107,54 @@ export const Sidebar = () => {
       icon: <ChartPie size={ICON_SIZE} />,
     },
     {
-      label: "Finance reports",
-      path: "/finance-reports",
-      icon: <ReceiptText size={ICON_SIZE} />,
-    },
-    {
       label: "Crash log",
       path: "crash-log",
       icon: <ShieldAlert size={ICON_SIZE} />,
     },
     {
-      label: "Distribution",
-      icon: <Globe size={ICON_SIZE} />,
-      children: [
-        { label: "Gamesite", path: "/gamesite" },
-        { label: "Custom website", path: "/websites" },
-        { label: "Discord", path: "/discord" },
-        { label: "CrazyGames", path: "/crazygames" },
-        { label: "Xsolla Mall", path: "/xsolla" },
-      ],
-    },
-    {
-      label: "Products",
-      path: "/products",
-      icon: <ShoppingCart size={ICON_SIZE} />,
+      label: "Finance reports",
+      path: "/finance-reports",
+      icon: <ReceiptText size={ICON_SIZE} />,
     },
     {
       label: "Capabilities",
       icon: <Layers size={ICON_SIZE} />,
       children: [
-        { label: "Account linking", path: "/account-linking" },
-        { label: "Rewarded ads", path: "/rewarded-ads" },
-        { label: "Restrict regions", path: "/restricted-regions" },
-        { label: "Player support", path: "/player-support" },
-        { label: "Customize control bar", path: "/control-bar" },
-        { label: "Display controls", path: "/game-controls" },
-        { label: "Website authentication", path: "/custom-authentication" },
+        {
+          label: "Account linking",
+          path: "/account-linking",
+          icon: <Check size={ICON_SIZE} />,
+        },
+        {
+          label: "Rewarded ads",
+          path: "/rewarded-ads",
+          icon: <Check size={ICON_SIZE} />,
+        },
+        {
+          label: "Restrict regions",
+          path: "/restricted-regions",
+          icon: <Check size={ICON_SIZE} />,
+        },
+        {
+          label: "Player support",
+          path: "/player-support",
+          icon: <Check size={ICON_SIZE} />,
+        },
+        {
+          label: "Loading video",
+          path: "/loading-video",
+          icon: <Check size={ICON_SIZE} />,
+        },
+        {
+          label: "Customize control bar",
+          path: "/control-bar",
+          icon: <Check size={ICON_SIZE} />,
+        },
+        {
+          label: "Display controls",
+          path: "/game-controls",
+          icon: <Check size={ICON_SIZE} />,
+        },
       ],
     },
     { label: "Settings", path: "/settings", icon: <Cog size={ICON_SIZE} /> },
@@ -111,7 +177,13 @@ export const Sidebar = () => {
                   item.path === pathname && "bg-muted",
                 )}
               >
-                <span className="opacity-40">{item.icon}</span>
+                <span
+                  className={
+                    item.path === pathname ? "opacity-80" : "opacity-40"
+                  }
+                >
+                  {item.icon}
+                </span>
                 {item.label}
               </Link>
             );
@@ -141,8 +213,8 @@ export const Sidebar = () => {
                             child.path === pathname && "bg-muted",
                           )}
                         >
-                          <span className="opacity-0">{item.icon}</span>
-                          {child.label}
+                          <span className="opacity-0">{child.icon}</span>
+                          <span className="w-full">{child.label}</span>
                         </Link>
                       );
                     })}
