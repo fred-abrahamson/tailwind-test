@@ -20,7 +20,7 @@ import {
   Cog,
   Globe,
   ShieldAlert,
-  Check,
+  Dot,
 } from "lucide-react";
 
 export const Sidebar = () => {
@@ -51,17 +51,17 @@ export const Sidebar = () => {
         {
           label: "Production",
           path: "/production",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-green-500" />,
         },
         {
           label: "Open testing",
           path: "/open-testing",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-green-500" />,
         },
         {
           label: "Closed testing",
           path: "/closed-testing",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-green-500" />,
         },
       ],
     },
@@ -72,32 +72,32 @@ export const Sidebar = () => {
         {
           label: "Gamesite",
           path: "/gamesite",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-green-500" />,
         },
         {
-          label: "Custom website",
+          label: "Headless destination",
           path: "/custom-website",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-green-500" />,
         },
         {
           label: "Discord",
           path: "/discord",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-orange-500" />,
         },
         {
           label: "CrazyGames",
           path: "/crazygames",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-gray-500" />,
         },
         {
           label: "Xsolla Mall",
           path: "/xsolla",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-gray-500" />,
         },
         {
           label: "Yandex Games",
           path: "/yandex",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-gray-500" />,
         },
       ],
     },
@@ -123,37 +123,42 @@ export const Sidebar = () => {
         {
           label: "Account linking",
           path: "/account-linking",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-green-500" />,
         },
         {
           label: "Rewarded ads",
           path: "/rewarded-ads",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-green-500" />,
         },
         {
           label: "Restrict regions",
           path: "/restricted-regions",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-green-500" />,
+        },
+        {
+          label: "Xsolla payments",
+          path: "/paystation",
+          icon: <Dot size={ICON_SIZE} className="text-gray-500" />,
         },
         {
           label: "Player support",
           path: "/player-support",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-green-500" />,
         },
         {
           label: "Loading video",
           path: "/loading-video",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-green-500" />,
         },
         {
           label: "Customize control bar",
           path: "/control-bar",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-gray-500" />,
         },
         {
           label: "Display controls",
           path: "/game-controls",
-          icon: <Check size={ICON_SIZE} />,
+          icon: <Dot size={ICON_SIZE} className="text-gray-500" />,
         },
       ],
     },
@@ -213,7 +218,7 @@ export const Sidebar = () => {
                             child.path === pathname && "bg-muted",
                           )}
                         >
-                          <span className="opacity-0">{child.icon}</span>
+                          <span>{child.icon}</span>
                           <span className="w-full">{child.label}</span>
                         </Link>
                       );

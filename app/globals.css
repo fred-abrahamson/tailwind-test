@@ -6,7 +6,6 @@ body {
   font-family: var(--font-inter), sans-serif;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   font-variant-ligatures: none;
-
 }
 
 @layer base {
@@ -39,25 +38,26 @@ body {
   }
 
   .dark {
-    --background: 210 6% 14%;
+    --background: 210 4% 10%;
     --foreground: 0 0% 98%;
-    --card: 220 4% 16%;
+    --card: 210 3% 15%;
     --card-foreground: 0 0% 98%;
     --popover: 210 6% 14%;
     --popover-foreground: 240 2% 20%;
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 9%;
-    --secondary: 240 2% 20%;
+    --secondary: 210 2% 23%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 2% 20%;
-    --muted-foreground: 0 0% 63.9%;
+    --muted-foreground: 218 5% 71%;
     --accent: 0 0% 14.9%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 200 3% 21%;
-    --input: 240 2% 20%;
-    --border-light: 240 2% 10%;
+    /* --border: 210 2% 23%; */
+    --border: 210 3% 15%;
+    --input: 210 2% 23%;
+    --border-light: 210 3% 15%;
     --ring: 0 0% 83.1%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;

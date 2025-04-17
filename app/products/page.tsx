@@ -3,12 +3,14 @@ import { useState } from "react";
 import { Check, X, ChevronRight, RefreshCcw, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
 type ProductType = {
   name: string;
   price: number;
   id: string;
-  matched: boolean;
+  discord: boolean;
+  xsolla: boolean;
 };
 
 const PRODUCTS: ProductType[] = [
@@ -16,67 +18,78 @@ const PRODUCTS: ProductType[] = [
     name: "Team Make Medal",
     price: 399.99,
     id: "team-make-medal",
-    matched: true,
+    discord: true,
+    xsolla: true,
   },
   {
     name: "Time-skip 60 seconds",
     price: 0.99,
     id: "timeskip60",
-    matched: true,
+    discord: true,
+    xsolla: true,
   },
   {
     name: "Time-skip 180 seconds",
     price: 1.99,
     id: "timeskip180",
-    matched: false,
+    discord: false,
+    xsolla: true,
   },
   {
     name: "Pouch of Gems",
     price: 0.99,
     id: "pouchofgems",
-    matched: true,
+    discord: true,
+    xsolla: true,
   },
   {
     name: "Bag of Gems",
     price: 0.49,
     id: "bagofgems",
-    matched: true,
+    discord: true,
+    xsolla: true,
   },
   {
     name: "Box of Gems",
     price: 3.99,
     id: "boxofgems",
-    matched: true,
+    discord: true,
+    xsolla: true,
   },
   {
     name: "Create of Gems",
     price: 7.99,
     id: "createofgems",
-    matched: true,
+    discord: true,
+    xsolla: true,
   },
   {
     name: "Shipment of Gems",
     price: 15.99,
     id: "shipmentofgems",
-    matched: false,
+    discord: false,
+    xsolla: true,
   },
   {
     name: "Plethora of Gems",
     price: 29.99,
     id: "plethoraofgems",
-    matched: false,
+    discord: false,
+    xsolla: true,
   },
   {
     name: "Plethora of Gems",
     price: 29.99,
     id: "1a25e9b4-baae-11ee-b790-738cac36f099",
-    matched: false,
+    discord: false,
+    xsolla: true,
   },
   {
     name: "Shipment of Gems",
     price: 15.99,
     id: "db932c8e-baad-11ee-ae65-3f5099fa6f4e",
-    matched: false,
+    discord: false,
+    xsolla: true,
   },
 ];
 export default function Products() {
@@ -94,9 +107,9 @@ export default function Products() {
           <Button>Import products</Button>
         </div>
       </div>
-      <section className="border-b border-border">
+      <section className="border-b">
         {showPrompt && (
-          <div className="flex items-center justify-between border-b px-12 py-8">
+          <div className="flex items-center justify-between border-b bg-muted px-12 py-8">
             <div>
               <h3 className="mb-2 font-semibold">
                 7 products are missing Discord SKUs
@@ -132,6 +145,7 @@ export default function Products() {
               className="group flex cursor-pointer items-center gap-8 px-12 py-4 hover:bg-muted"
             >
               <div className="flex w-full items-center gap-4">
+                <div className="h-10 w-10 rounded-lg bg-muted" />
                 <div className="flex flex-col gap-2 text-base">
                   <span className="text-sm font-semibold">{item.name}</span>
                   <div className="flex items-center gap-2 text-xs font-normal opacity-80">
@@ -140,20 +154,24 @@ export default function Products() {
                 </div>
               </div>
               <div className="flex w-full justify-end gap-2">
-                <Badge variant="outline">
-                  {item.matched ? (
-                    <span className="flex items-center gap-1">
-                      <Check size={14} className="text-green-300" />
-                      Discord SKU
-                    </span>
-                  ) : (
-                    <span className="flex items-center gap-1">
-                      <X size={14} className="text-red-500" />
-                      Discord SKU
-                    </span>
-                  )}
-                </Badge>
-                <Badge variant="secondary">${item.price}</Badge>
+                {item.discord && (
+                  <Image
+                    src="/discord-icon.png"
+                    alt="Discord"
+                    width={24}
+                    height={24}
+                    className="rounded-sm"
+                  />
+                )}
+                {item.xsolla && (
+                  <Image
+                    src="/xsolla-icon.png"
+                    alt="Xsolla"
+                    width={24}
+                    height={24}
+                    className="rounded-sm"
+                  />
+                )}
               </div>
             </li>
           ))}

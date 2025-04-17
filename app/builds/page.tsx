@@ -397,13 +397,13 @@ export default function Builds() {
           }}
         >
           {build && (
-            <DrawerContent className="w-[50%] min-w-[480px] max-w-[720px]">
+            <DrawerContent className="w-[50%] min-w-[480px] max-w-[940px]">
               <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
                 <VisuallyHidden>
                   <DialogTitle>Build {build.number}</DialogTitle>
                 </VisuallyHidden>
                 <div>
-                  <div className="mb-4 text-sm opacity-50">
+                  <div className="mb-4 text-sm opacity-70">
                     Build #{build.number}
                   </div>
                   <h1 className="mb-2 text-xl font-semibold">
@@ -416,7 +416,7 @@ export default function Builds() {
                 <Separator />
                 <section className="py-2">
                   <h3 className="mb-2 font-semibold">Build message</h3>
-                  <p className="mb-4 text-sm opacity-50">
+                  <p className="mb-4 text-sm opacity-70">
                     Description of build used internally.
                   </p>
                   <Input
@@ -427,7 +427,7 @@ export default function Builds() {
 
                 <section className="py-2">
                   <h3 className="mb-2 font-semibold">Run build</h3>
-                  <p className="mb-4 text-sm opacity-50">
+                  <p className="mb-4 text-sm opacity-70">
                     You can run a build as a specific user instead of playing
                     with your Pley account. Enter a user ID or an account email
                     below to run the build.
@@ -474,7 +474,7 @@ export default function Builds() {
 
                 <section className="py-2">
                   <h3 className="mb-2 font-semibold">Post-processing</h3>
-                  <p className="mb-4 text-sm opacity-50">
+                  <p className="mb-4 text-sm opacity-70">
                     Post-processing involves a series of automatic
                     optimizations, adjustments, and compression to ensure your
                     game runs seamlessly on the web in all web browsers. As
@@ -496,7 +496,7 @@ export default function Builds() {
   /* 
    <DrawerHeader className="border-b px-8 py-12 pb-2">
                 <div>
-                  <div className="mb-4 text-sm opacity-50">
+                  <div className="mb-4 text-sm opacity-70">
                     Build #{build.number}
                   </div>
                   <h1 className="mb-2 text-xl font-semibold">
@@ -510,7 +510,7 @@ export default function Builds() {
               <div className="px-8">
                 <section className="py-4">
                   <h3 className="mb-2 font-semibold">Run build</h3>
-                  <p className="mb-4 text-sm opacity-50">
+                  <p className="mb-4 text-sm opacity-70">
                     You can run a build as a specific user instead of playing
                     with your Pley account. Enter a user ID or an account email
                     below to run the build.
@@ -532,7 +532,7 @@ export default function Builds() {
 
                 <section className="border-b border-border py-8">
                   <h3 className="text-lg font-bold">Build description</h3>
-                  <p className="mb-4 text-sm opacity-50">
+                  <p className="mb-4 text-sm opacity-70">
                     Description of build used internally.
                   </p>
                   <Input
@@ -542,7 +542,7 @@ export default function Builds() {
                 </section>
                 <section className="border-b border-border py-8">
                   <h3 className="text-lg font-bold">Post-processing</h3>
-                  <p className="mb-4 text-sm opacity-50">
+                  <p className="mb-4 text-sm opacity-70">
                     Post-processing involves a series of automatic
                     optimizations, adjustments, and compression to ensure your
                     game runs seamlessly on the web in all web browsers. As
@@ -553,7 +553,7 @@ export default function Builds() {
                 </section>
                 <section className="border-b border-border py-8">
                   <h3 className="text-lg font-bold">Build description</h3>
-                  <p className="mb-4 text-sm opacity-50">
+                  <p className="mb-4 text-sm opacity-70">
                     Description of build used internally.
                   </p>
                   <Input
@@ -563,7 +563,7 @@ export default function Builds() {
                 </section>
                 <section className="border-b border-border py-8">
                   <h3 className="text-lg font-bold">Post-processing</h3>
-                  <p className="mb-4 text-sm opacity-50">
+                  <p className="mb-4 text-sm opacity-70">
                     Post-processing involves a series of automatic
                     optimizations, adjustments, and compression to ensure your
                     game runs seamlessly on the web in all web browsers. As

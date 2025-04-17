@@ -494,7 +494,7 @@ export default function CrashLog() {
 
                 <section className="py-2">
                   <h3 className="mb-2 font-semibold">Memory</h3>
-                  <p className="mb-4 text-sm opacity-50">
+                  <p className="mb-4 text-sm opacity-70">
                     You can run a build as a specific user instead of playing
                     with your Pley account. Enter a user ID or an account email
                     below to run the build.
@@ -504,7 +504,7 @@ export default function CrashLog() {
 
                 <section className="py-2 pb-32">
                   <h3 className="mb-2 font-semibold">Stack trace</h3>
-                  <p className="mb-4 text-sm opacity-50">
+                  <p className="mb-4 text-sm opacity-70">
                     Post-processing involves a series of automatic
                     optimizations, adjustments, and compression to ensure your
                     game runs seamlessly on the web in all web browsers. As

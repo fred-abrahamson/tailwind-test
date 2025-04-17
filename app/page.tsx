@@ -14,7 +14,7 @@ export default function Home() {
           <Separator />
           <div className="w-full py-4">
             <h3 className="mb-2 font-semibold">Latest build</h3>
-            <p className="mb-4 text-sm opacity-50">
+            <p className="mb-4 text-sm opacity-70">
               Enter webhook URL used to send game user allocation requests to
               your backend.
             </p>
@@ -22,7 +22,7 @@ export default function Home() {
           </div>
           <div className="w-full py-4">
             <h3 className="mb-2 font-semibold">Production build</h3>
-            <p className="mb-4 text-sm opacity-50">
+            <p className="mb-4 text-sm opacity-70">
               Enter webhook URL used to send game user allocation requests to
               your backend.
             </p>
@@ -30,7 +30,7 @@ export default function Home() {
           </div>
           <div className="w-full py-4">
             <h3 className="mb-2 font-semibold">Crashes</h3>
-            <p className="mb-4 text-sm opacity-50">
+            <p className="mb-4 text-sm opacity-70">
               Enter webhook URL used to send game user allocation requests to
               your backend.
             </p>
@@ -38,7 +38,7 @@ export default function Home() {
           </div>
           <div className="w-full py-4">
             <h3 className="mb-2 font-semibold">Finance reports</h3>
-            <p className="mb-4 text-sm opacity-50">
+            <p className="mb-4 text-sm opacity-70">
               Enter webhook URL used to send game user allocation requests to
               your backend.
             </p>
@@ -46,7 +46,7 @@ export default function Home() {
           </div>
           <div className="w-full py-4">
             <h3 className="mb-2 font-semibold">Capabilities</h3>
-            <p className="mb-4 text-sm opacity-50">
+            <p className="mb-4 text-sm opacity-70">
               Enter webhook URL used to send game user allocation requests to
               your backend.
             </p>

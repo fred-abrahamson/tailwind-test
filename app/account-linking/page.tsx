@@ -14,7 +14,7 @@ export default function AccountLinking() {
     <div className="flex h-full flex-col-reverse xl:flex-row">
       <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
         <div>
-          <div className="mb-4 text-sm opacity-50">Capabilities</div>
+          <div className="mb-4 text-sm opacity-70">Capabilities</div>
           <h1 className="mb-2 text-xl font-semibold">Account linking</h1>
           <p className="mb-5 text-sm leading-6 opacity-80">
             Pley Connect is a seamless way of expanding mobile-only users into
@@ -27,7 +27,7 @@ export default function AccountLinking() {
         <Separator />
         <section className="py-4">
           <h3 className="mb-2 font-semibold">Get started</h3>
-          <p className="mb-4 text-sm opacity-50">
+          <p className="mb-4 text-sm opacity-70">
             How are changes affecting the game, what needs to be done by the
             developers in the game or on the website.
           </p>
@@ -43,7 +43,7 @@ export default function AccountLinking() {
         </section>
         <section className="py-4">
           <h3 className="mb-2 font-semibold">Deep link schema</h3>
-          <p className="mb-4 text-sm opacity-50">
+          <p className="mb-4 text-sm opacity-70">
             What is this, where can it be found.
           </p>
           <Input
@@ -69,6 +69,7 @@ export default function AccountLinking() {
           src="/account-linking.webp"
           height="0"
           width="0"
+          unoptimized
           alt="Account linking"
           className="absolute left-0 top-0 h-full w-full object-cover"
         />

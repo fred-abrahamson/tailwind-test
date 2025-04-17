@@ -39,7 +39,7 @@ export default function GameControls() {
     <div className="flex h-full flex-col-reverse xl:flex-row">
       <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
         <div>
-          <div className="mb-4 text-sm opacity-50">Capabilities</div>
+          <div className="mb-4 text-sm opacity-70">Capabilities</div>
           <h1 className="mb-2 text-xl font-semibold">Display controls</h1>
           <p className="mb-6 text-sm leading-6 opacity-80">
             {`Allow your players to fully leverage the web playing experience. Add
@@ -117,6 +117,7 @@ export default function GameControls() {
           height="0"
           width="0"
           alt="Account linking"
+          unoptimized
           className="absolute left-0 top-0 h-full w-full object-cover"
         />
       </div>

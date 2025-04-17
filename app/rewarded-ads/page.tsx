@@ -13,7 +13,7 @@ export default function RewardedAds() {
     <div className="flex h-full flex-col-reverse xl:flex-row">
       <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
         <div>
-          <div className="mb-4 text-sm opacity-50">Capabilities</div>
+          <div className="mb-4 text-sm opacity-70">Capabilities</div>
           <h1 className="mb-2 text-xl font-semibold">Rewarded ads</h1>
           <p className="mb-5 text-sm leading-6 opacity-80">
             Keep your players coming back for more by serving ads in exchange
@@ -24,7 +24,7 @@ export default function RewardedAds() {
         <Separator />
         <section className="py-4">
           <h3 className="mb-2 font-semibold">Get started</h3>
-          <p className="mb-4 text-sm opacity-50">
+          <p className="mb-4 text-sm opacity-70">
             When enabling this feature the Playable will load the Google Adsense
             script and ask the player for the necessary consent.
           </p>
@@ -51,6 +51,7 @@ export default function RewardedAds() {
           height="0"
           width="0"
           alt="Account linking"
+          unoptimized
           className="absolute left-0 top-0 h-full w-full object-cover"
         />
       </div>

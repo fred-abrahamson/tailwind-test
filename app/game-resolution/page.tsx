@@ -12,7 +12,7 @@ export default function GameResolution() {
     <div className="flex h-full flex-col-reverse lg:flex-row">
       <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
         <div>
-          <div className="mb-4 text-sm opacity-50">Capabilities</div>
+          <div className="mb-4 text-sm opacity-70">Capabilities</div>
           <h1 className="mb-2 text-xl font-semibold">Game resolution</h1>
           <p className="mb-5 text-sm leading-6 opacity-80">
             Optional feature description.
@@ -47,6 +47,7 @@ export default function GameResolution() {
           src="/rewarded-ads.webp"
           height="0"
           width="0"
+          unoptimized
           alt="Account linking"
           className="absolute left-0 top-0 h-full w-full object-cover"
         />

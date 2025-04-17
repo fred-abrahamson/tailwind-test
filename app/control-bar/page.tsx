@@ -27,7 +27,7 @@ export default function ControlBar() {
     <div className="flex h-full flex-col-reverse xl:flex-row">
       <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
         <div>
-          <div className="mb-4 text-sm opacity-50">Capabilities</div>
+          <div className="mb-4 text-sm opacity-70">Capabilities</div>
           <h1 className="mb-2 text-xl font-semibold">Customize control bar</h1>
           <p className="mb-6 text-sm leading-6 opacity-80">
             {`Customize the Playable's control bar.`}
@@ -36,7 +36,7 @@ export default function ControlBar() {
         <Separator />
         <section className="py-4">
           <h3 className="mb-2 font-semibold">Position</h3>
-          <p className="mb-4 text-sm opacity-50">
+          <p className="mb-4 text-sm opacity-70">
             Choose where the control bar should be placed.
           </p>
           <Select
@@ -67,7 +67,7 @@ export default function ControlBar() {
         </section>
         <section className={cn("py-4", position === "hidden" && "opacity-50")}>
           <h3 className="mb-2 font-semibold">Home page URL</h3>
-          <p className="mb-4 text-sm opacity-50">
+          <p className="mb-4 text-sm opacity-70">
             Add a back button to the control bar to allow users to navigate from
             the Playable back to a page on your website.
           </p>
@@ -80,7 +80,7 @@ export default function ControlBar() {
         </section>
         <section className={cn("py-4", position === "hidden" && "opacity-50")}>
           <h3 className="mb-2 font-semibold">Theme</h3>
-          <p className="mb-4 text-sm opacity-50">
+          <p className="mb-4 text-sm opacity-70">
             Set a background color for the control bar to match your game.
           </p>
           <Select
@@ -115,6 +115,7 @@ export default function ControlBar() {
           height="0"
           width="0"
           alt="Account linking"
+          unoptimized
           className="absolute left-0 top-0 h-full w-full object-cover"
         />
       </div>

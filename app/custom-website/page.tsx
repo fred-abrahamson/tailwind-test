@@ -14,8 +14,10 @@ export default function PlayerSupport() {
     <div className="flex h-full flex-col-reverse xl:flex-row">
       <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
         <div>
-          <div className="mb-4 text-sm opacity-50">Distribution</div>
-          <h1 className="mb-2 text-xl font-semibold">Website authentication</h1>
+          <div className="mb-4 text-xs font-medium opacity-70">
+            Distribution
+          </div>
+          <h1 className="mb-2 text-xl font-semibold">Headless destination</h1>
           <p className="mb-5 text-sm leading-6 opacity-80">
             Integrating your existing user system with Pley allows your users to
             access games without creating separate accounts. By issuing Pley
@@ -29,7 +31,7 @@ export default function PlayerSupport() {
         <Separator />
         <section className="w-full py-4">
           <h3 className="mb-2 font-semibold">Webhook URL</h3>
-          <p className="mb-4 text-sm opacity-50">
+          <p className="mb-4 text-sm opacity-70">
             Enter webhook URL used to send game user allocation requests to your
             backend.
           </p>
@@ -41,7 +43,7 @@ export default function PlayerSupport() {
         </section>
         <section className="w-full py-4">
           <h3 className="mb-2 font-semibold">Webhook signing key</h3>
-          <p className="mb-4 text-sm opacity-50">
+          <p className="mb-4 text-sm opacity-70">
             Enter webhook signing key used to sign webhook requests.
           </p>
           <Textarea
@@ -53,7 +55,7 @@ export default function PlayerSupport() {
         </section>
         <section className="w-full py-4">
           <h3 className="mb-2 font-semibold">Allowed parent websites</h3>
-          <p className="mb-4 text-sm opacity-50">
+          <p className="mb-4 text-sm opacity-70">
             Specify on which websites your game is allowed to run on.
           </p>
           <div className="flex justify-between gap-2">

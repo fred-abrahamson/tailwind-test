@@ -28,7 +28,7 @@ export default function Production() {
   return (
     <div>
       <div>
-        <div className="mb-4 text-sm opacity-50">Capabilities</div>
+        <div className="mb-4 text-sm opacity-70">Capabilities</div>
         <h1 className="mb-2 text-xl font-semibold">Player support</h1>
         <p className="mb-6 text-sm leading-6 opacity-80">
           Prevent players from certain countries or regions from accessing your
@@ -44,7 +44,7 @@ export default function Production() {
         <div className="flex h-full w-full flex-col gap-6 p-12">
           <section className="max-w-[980px] py-4">
             <h3 className="mb-2 font-semibold">Release build</h3>
-            <p className="mb-4 text-sm opacity-50">
+            <p className="mb-4 text-sm opacity-70">
               Enable Maintenance mode to temporarily disable the game for
               players in this release track. You may customize the message
               displayed on the maintenance screen.
@@ -53,7 +53,7 @@ export default function Production() {
           </section>
           <section className="max-w-[980px] py-4">
             <h3 className="mb-2 font-semibold">History</h3>
-            <p className="mb-4 text-sm opacity-50">
+            <p className="mb-4 text-sm opacity-70">
               Previously published builds on this track.
             </p>
             <ul className="mb-4">
@@ -109,7 +109,7 @@ export default function Production() {
         <div className="relative flex h-full max-w-96 overflow-hidden p-8">
           <section className="max-w-[980px] py-4">
             <h3 className="mb-2 font-semibold">Maintenance mode</h3>
-            <p className="mb-4 text-sm opacity-50">
+            <p className="mb-4 text-sm opacity-70">
               Enable Maintenance mode to temporarily disable the game for
               players in this release track. You may customize the message
               displayed on the maintenance screen.
