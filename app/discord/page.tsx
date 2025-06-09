@@ -26,11 +26,11 @@ const MAPPINGS = [
 
 export default function PlayerSupport() {
   const [hasChanges, setHasChanges] = React.useState<boolean>(false);
-  const [hasAccess, setHasAccess] = React.useState<boolean>(false);
+  const [hasAccess, setHasAccess] = React.useState<boolean>(true);
 
   return (
     <div className="flex h-full flex-col-reverse lg:flex-row">
-      <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12 lg:border-r">
+      <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
         <div>
           <div className="mb-4 flex items-center gap-2 text-xs font-medium opacity-70">
             Distribution
@@ -157,8 +157,8 @@ export default function PlayerSupport() {
           )}
         </section>
       </div>
-      <div className="top-16 h-full max-h-[320px] w-full p-4 lg:sticky lg:max-h-[100vh]">
-        <div className="flex h-[calc(100vh_-_95px)] w-full justify-center overflow-hidden rounded-lg bg-[#7A7DF0] lg:items-center">
+      <div className="top-16 h-full max-h-[320px] w-full border-b border-l-0 p-4 lg:sticky lg:max-h-[100vh] lg:border-b-0 lg:border-l">
+        <div className="flex h-full w-full justify-center overflow-hidden rounded-lg bg-[#7A7DF0] lg:h-[calc(100vh_-_95px)] lg:items-center">
           <Image
             src="/discord.jpg"
             width={0}

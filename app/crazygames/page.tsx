@@ -31,7 +31,7 @@ export default function PlayerSupport() {
 
   return (
     <div className="flex h-full flex-col-reverse lg:flex-row">
-      <div className="flex h-full w-full max-w-[940px] flex-col gap-6 border-t p-12 lg:border-r lg:border-t-0">
+      <div className="flex h-full w-full max-w-[940px] flex-col gap-6 border-t p-12 lg:min-w-[800px] lg:border-r lg:border-t-0">
         <div>
           <div className="mb-4 text-xs font-medium opacity-70">
             Distribution
@@ -85,7 +85,7 @@ export default function PlayerSupport() {
         </section>
         <section className="w-full py-4">
           <h3 className="mb-2 font-semibold">Cover images</h3>
-          <p className="mb-4 text-sm opacity-70">
+          <p className="mb-6 text-sm opacity-70">
             The cover images represent your game on CrazyGames' platform. They
             should be clear, professional, and visually appealing. Please
             provide three sizes: landscape (1920x1080), portrait (800x1200), and
@@ -93,7 +93,7 @@ export default function PlayerSupport() {
             guidelines.
           </p>
           <div className="flex gap-3">
-            <div className="w-full">
+            <div className="w-full max-w-56">
               <div className="mb-2 text-xs font-semibold text-muted-foreground">
                 Square 1:1 <span className="text-orange-500">*</span>
               </div>
@@ -101,7 +101,7 @@ export default function PlayerSupport() {
                 <Plus size={18} />
               </div>
             </div>
-            <div className="w-full">
+            <div className="w-full max-w-56">
               <div className="mb-2 text-xs font-semibold text-muted-foreground">
                 Landscape 16:9 <span className="text-orange-500">*</span>
               </div>
@@ -109,7 +109,7 @@ export default function PlayerSupport() {
                 <Plus size={18} />
               </div>
             </div>
-            <div className="w-full">
+            <div className="w-full max-w-56">
               <div className="mb-2 text-xs font-semibold text-muted-foreground">
                 Porttrait 2:3 <span className="text-orange-500">*</span>
               </div>
@@ -121,11 +121,11 @@ export default function PlayerSupport() {
         </section>
         <section className="w-full py-4">
           <h3 className="mb-2 font-semibold">Preview videos</h3>
-          <p className="mb-4 text-sm opacity-70">
+          <p className="mb-6 text-sm opacity-70">
             {`Game videos are shown when players hover over your game cover. We may replace them with our own if necessary. For details, refer to our game video guidelines.`}
           </p>
           <div className="flex gap-3">
-            <div className="w-full">
+            <div className="w-full max-w-56">
               <div className="mb-2 text-xs font-semibold text-muted-foreground">
                 Landscape 16:9 <span className="text-orange-500">*</span>
               </div>
@@ -133,7 +133,7 @@ export default function PlayerSupport() {
                 <Plus size={18} />
               </div>
             </div>
-            <div className="w-full">
+            <div className="w-full max-w-56">
               <div className="mb-2 text-xs font-semibold text-muted-foreground">
                 Porttrait 2:3
               </div>

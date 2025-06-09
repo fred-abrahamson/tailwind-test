@@ -12,7 +12,7 @@ export default function AccountLinking() {
   const [checked, setChecked] = React.useState<boolean>(false);
   return (
     <div className="flex h-full flex-col-reverse xl:flex-row">
-      <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
+      <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12 lg:border-r">
         <div>
           <div className="mb-4 text-sm opacity-70">Capabilities</div>
           <h1 className="mb-2 text-xl font-semibold">Account linking</h1>
@@ -61,18 +61,20 @@ export default function AccountLinking() {
           </div>
         )}
       </div>
-      <div className="max-h-auto relative flex h-full w-full justify-center overflow-hidden bg-muted p-16 xl:max-h-none xl:items-center">
-        <div className="relative z-10">
-          <AccountLinkingUIShot />
+      <div className="top-16 h-full max-h-[320px] w-full p-4 lg:sticky lg:max-h-[100vh]">
+        <div className="relative flex h-[calc(100vh_-_95px)] w-full justify-center overflow-hidden rounded-lg lg:items-center">
+          <div className="relative z-10">
+            <AccountLinkingUIShot />
+          </div>
+          <Image
+            src="/account-linking.webp"
+            height="0"
+            width="0"
+            unoptimized
+            alt="Account linking"
+            className="absolute left-0 top-0 h-full w-full object-cover"
+          />
         </div>
-        <Image
-          src="/account-linking.webp"
-          height="0"
-          width="0"
-          unoptimized
-          alt="Account linking"
-          className="absolute left-0 top-0 h-full w-full object-cover"
-        />
       </div>
     </div>
   );

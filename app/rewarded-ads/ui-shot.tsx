@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const UIShot = () => {
   return (
-    <div className="flex h-auto w-auto flex-col items-center justify-center gap-3 rounded-xl bg-[#fff] p-4 text-black shadow-xl">
+    <div className="m-auto flex h-auto w-[80%] flex-col items-center justify-center gap-3 rounded-xl bg-[#fff] p-4 text-black shadow-xl">
       <div className="flex w-full items-center justify-between">
         <EllipsisVertical className="opacity-50" size={18} />
         <div className="flex items-center gap-2 text-xs">

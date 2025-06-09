@@ -1,9 +1,14 @@
 "use client";
 import { useState } from "react";
-import { Check, X, ChevronRight, RefreshCcw, Filter } from "lucide-react";
+import { Search, X, CircleAlert, RefreshCcw, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 type ProductType = {
   name: string;
@@ -31,7 +36,7 @@ const PRODUCTS: ProductType[] = [
   {
     name: "Time-skip 180 seconds",
     price: 1.99,
-    id: "timeskip180",
+    id: "1a25e9b4-baae-11ee-b790-738cac36f099",
     discord: false,
     xsolla: true,
   },
@@ -46,8 +51,8 @@ const PRODUCTS: ProductType[] = [
     name: "Bag of Gems",
     price: 0.49,
     id: "bagofgems",
-    discord: true,
-    xsolla: true,
+    discord: false,
+    xsolla: false,
   },
   {
     name: "Box of Gems",
@@ -80,14 +85,14 @@ const PRODUCTS: ProductType[] = [
   {
     name: "Plethora of Gems",
     price: 29.99,
-    id: "1a25e9b4-baae-11ee-b790-738cac36f099",
+    id: "1a25e9b4-baae-11ee-b790-738cac56f099",
     discord: false,
     xsolla: true,
   },
   {
     name: "Shipment of Gems",
     price: 15.99,
-    id: "db932c8e-baad-11ee-ae65-3f5099fa6f4e",
+    id: "db932c8e-baad-11ee-ae65-3f5099a6f4e",
     discord: false,
     xsolla: true,
   },
@@ -98,79 +103,78 @@ export default function Products() {
     <div>
       <div className="flex w-full items-center justify-between border-b px-12 py-4">
         <div className="flex items-center gap-4">
-          <h1 className="font-semibold">Products</h1>
-          <ChevronRight size={16} className="opacity-50" />
-          <div className="font-semibold">Filters</div>
+          <Search size={18} className="opacity-50" />
+          <h1 className="font-semibold">Filter products...</h1>
         </div>
         <div className="flex gap-2">
           <Button variant="secondary">Add product</Button>
           <Button>Import products</Button>
         </div>
       </div>
-      <section className="border-b">
+      <section className="w-full">
         {showPrompt && (
-          <div className="flex items-center justify-between border-b bg-muted px-12 py-8">
-            <div>
-              <h3 className="mb-2 font-semibold">
-                7 products are missing Discord SKUs
-              </h3>
-              <p className="text-sm opacity-80">
-                {`Add the SKUs in Discord’s Developer portal or update the SKU to
-            match the product name.`}
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <Button
-                size="icon"
-                variant="secondary"
-                onClick={() => setShowPrompt(false)}
-              >
-                <Filter />
-              </Button>
-              <Button
-                size="icon"
-                variant="secondary"
-                onClick={() => setShowPrompt(false)}
-              >
-                <RefreshCcw />
-              </Button>
-              <Button variant="secondary">Automatch</Button>
-            </div>
-          </div>
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem className="border-b" value="Discord">
+              <AccordionTrigger className="border-0 px-12 py-4 hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <CircleAlert size={18} className="text-orange-500" />7 items
+                  are missing Discord SKUs
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="flex flex-col">
+                text
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         )}
-        <ul className="py-4">
+        <div className="flex gap-8 border-b px-12 py-4 font-semibold">
+          <div className="w-full text-xs text-muted-foreground">Product</div>
+          <div className="w-full text-xs text-muted-foreground">Price</div>
+          <div className="w-full text-xs text-muted-foreground">
+            Connections
+          </div>
+        </div>
+        <ul>
           {PRODUCTS.map((item) => (
             <li
               key={item.id}
-              className="group flex cursor-pointer items-center gap-8 px-12 py-4 hover:bg-muted"
+              className="group flex cursor-pointer items-center gap-8 px-12 py-4 hover:bg-card"
             >
               <div className="flex w-full items-center gap-4">
-                <div className="h-10 w-10 rounded-lg bg-muted" />
+                <Image
+                  width={40}
+                  height={40}
+                  src="/product.png"
+                  alt={item.name}
+                  className="h-10 w-10"
+                />
                 <div className="flex flex-col gap-2 text-base">
                   <span className="text-sm font-semibold">{item.name}</span>
                   <div className="flex items-center gap-2 text-xs font-normal opacity-80">
-                    <span>${item.price}</span>·<span>{item.id}</span>
+                    {item.id}
                   </div>
                 </div>
               </div>
-              <div className="flex w-full justify-end gap-2">
+              <div className="w-full text-xs font-semibold">
+                <span className="rounded-sm bg-muted px-2 py-1.5">
+                  ${item.price}
+                </span>
+              </div>
+              <div className="flex w-full gap-2">
                 {item.discord && (
-                  <Image
-                    src="/discord-icon.png"
-                    alt="Discord"
-                    width={24}
-                    height={24}
-                    className="rounded-sm"
-                  />
+                  <span className="rounded-sm bg-muted px-3 py-1.5 text-xs font-semibold">
+                    Discord
+                  </span>
                 )}
                 {item.xsolla && (
-                  <Image
-                    src="/xsolla-icon.png"
-                    alt="Xsolla"
-                    width={24}
-                    height={24}
-                    className="rounded-sm"
-                  />
+                  <span className="rounded-sm bg-muted px-3 py-1.5 text-xs font-semibold">
+                    Xsolla
+                  </span>
+                )}
+                {!item.discord && !item.xsolla && (
+                  <span className="rounded-sm bg-muted px-3 py-1.5 text-xs font-semibold opacity-50">
+                    Not synched
+                  </span>
                 )}
               </div>
             </li>

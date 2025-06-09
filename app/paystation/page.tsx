@@ -14,7 +14,7 @@ export default function RewardedAds() {
 
   return (
     <div className="flex h-full flex-col-reverse xl:flex-row">
-      <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12">
+      <div className="flex h-full w-full max-w-[940px] flex-col gap-6 p-12 lg:border-r">
         <div>
           <div className="mb-4 text-sm opacity-70">Capabilities</div>
           <h1 className="mb-2 text-xl font-semibold">Xsolla payments</h1>
@@ -99,15 +99,17 @@ export default function RewardedAds() {
           )}
         </section>
       </div>
-      <div className="max-h-auto relative flex h-full w-full items-center justify-center overflow-hidden bg-[#ff005c] bg-muted p-16 xl:max-h-none xl:items-center">
-        <Image
-          src="/xsolla-cover.webp"
-          height="0"
-          width="0"
-          alt="Account linking"
-          className="h-[500px] w-auto object-contain"
-          unoptimized
-        />
+      <div className="top-16 h-full max-h-[320px] w-full p-4 lg:sticky lg:max-h-[100vh]">
+        <div className="flex h-[calc(100vh_-_95px)] w-full justify-center overflow-hidden rounded-lg bg-[#a7b5ff] lg:items-center">
+          <Image
+            src="/xsolla-payment.png"
+            height="0"
+            width="0"
+            alt="Account linking"
+            className="h-auto w-[200%] object-cover"
+            unoptimized
+          />
+        </div>
       </div>
     </div>
   );

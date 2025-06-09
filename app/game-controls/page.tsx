@@ -110,7 +110,7 @@ export default function GameControls() {
       </div>
       <div className="relative flex h-full w-full justify-center overflow-hidden bg-muted p-16 xl:max-h-none xl:items-center">
         <div className="relative z-10">
-          <ControlsUiShot />
+          <ControlsUiShot items={items} />
         </div>
         <Image
           src="/restricted-regions.webp"
