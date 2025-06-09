@@ -1,6 +1,9 @@
 import { Gamepad } from "lucide-react";
+import { type Control } from "./page";
 
-export const ControlsUiShot = ({ items }) => {
+type Props = { items: Control[] };
+
+export const ControlsUiShot = ({ items }: Props) => {
   return (
     <div className="flex flex-col items-end gap-2">
       <div className="flex h-auto w-auto min-w-[320px] flex-col justify-center gap-4 rounded-xl bg-[#111] px-3 py-4 shadow-xl">

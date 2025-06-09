@@ -6,7 +6,7 @@ import { X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ControlsUiShot } from "./ui-shot";
 
-type Control = { key: string; text: string };
+export type Control = { key: string; text: string };
 
 const CONTROLS = [
   {
