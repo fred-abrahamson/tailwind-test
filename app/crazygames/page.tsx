@@ -8,26 +8,8 @@ import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { Checkbox } from "@/components/ui/checkbox";
 
-const MAPPINGS = [
-  {
-    prefix: "/autogunassets",
-    target: "autogun-prod-assets-ipv6.p1.autogunheroestech.com",
-  },
-  { prefix: "/googleanalytics", target: "region1.google-analytics.com" },
-  { prefix: "/firebasewebconfig", target: "firebase.googleapis.com" },
-  { prefix: "/sentry", target: "o1064059.ingest.sentry.io" },
-  { prefix: "/airbridge", target: "core.airbridge.io" },
-  {
-    prefix: "/gameserver",
-    target: "autogun-prod.p1.autogunheroestech.com:9380",
-  },
-  { prefix: "/airbridgesdk", target: "sdk.airbridge.io" },
-  { prefix: "/firebaseauth", target: "firebaseinstallations.googleapis.com" },
-];
-
 export default function PlayerSupport() {
   const [hasChanges, setHasChanges] = React.useState<boolean>(false);
-  const [hasAccess, setHasAccess] = React.useState<boolean>(false);
 
   return (
     <div className="flex h-full flex-col-reverse lg:flex-row">

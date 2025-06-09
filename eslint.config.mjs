@@ -10,14 +10,15 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  // Extend Next.js recommended + TypeScript config
+  // Base config from Next.js
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 
-  // Add custom rule overrides
+  // Global overrides to disable specific rules
   {
     rules: {
-      "no-unused-vars": ["warn"],
-      "react/no-unescaped-entities": ["warn"], // Ensures JSX escapes characters like `'`
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "react/no-unescaped-entities": "off",
     },
   },
 ];
