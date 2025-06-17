@@ -21,6 +21,8 @@ import {
   Globe,
   ShieldAlert,
   Dot,
+  Users,
+  SquareArrowDown,
 } from "lucide-react";
 
 export const Sidebar = () => {
@@ -28,7 +30,31 @@ export const Sidebar = () => {
 
   const ICON_SIZE = 16;
 
-  const navItems = [
+  const orgNavItems = [
+    {
+      label: "Home",
+      path: "/org-home",
+      icon: <House size={ICON_SIZE} />,
+    },
+    {
+      label: "Downloads",
+      path: "/org-downloads",
+      icon: <SquareArrowDown size={ICON_SIZE} />,
+    },
+    {
+      label: "Members",
+      path: "/org-members",
+      icon: <Users size={ICON_SIZE} />,
+    },
+    {
+      label: "Settings",
+      path: "/org-settings",
+      icon: <Cog size={ICON_SIZE} />,
+    },
+  ];
+
+  const gameNavItems = [
+    // Renamed from navItems for clarity
     {
       label: "Home",
       path: "/",
@@ -136,14 +162,14 @@ export const Sidebar = () => {
           icon: <Dot size={ICON_SIZE} className="text-green-500" />,
         },
         {
-          label: "Xsolla payments",
-          path: "/paystation",
-          icon: <Dot size={ICON_SIZE} className="text-gray-500" />,
-        },
-        {
           label: "Player support",
           path: "/player-support",
           icon: <Dot size={ICON_SIZE} className="text-green-500" />,
+        },
+        {
+          label: "Conversion API",
+          path: "/conversion-api",
+          icon: <Dot size={ICON_SIZE} className="text-gray-500" />,
         },
         {
           label: "Loading video",
@@ -165,13 +191,18 @@ export const Sidebar = () => {
     { label: "Settings", path: "/settings", icon: <Cog size={ICON_SIZE} /> },
   ];
 
+  // Determine which set of nav items to use
+  const isOrgLevel = pathname.startsWith("/org");
+  const currentNavItems = isOrgLevel ? orgNavItems : gameNavItems;
+
   return (
     <div className="fixed flex h-[100vh] w-[320px] flex-col pt-16">
       <div
         className="flex h-full flex-col overflow-y-scroll px-4 py-6"
         style={{ scrollbarWidth: "none" }}
       >
-        {navItems.map((item) => {
+        {currentNavItems.map((item) => {
+          // Use currentNavItems here
           if (item.path) {
             return (
               <Link

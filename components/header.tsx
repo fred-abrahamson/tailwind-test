@@ -1,7 +1,9 @@
+"use client";
 import Dropdown from "@/components/dropdown";
 import { ChevronLeft, CircleHelp, ScrollText, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const games = [
   {
@@ -49,27 +51,35 @@ const orgs = [
 ];
 
 export const Header = () => {
+  const pathname = usePathname();
+
+  // Determine which set of nav items to use
+  const isOrgLevel = pathname.startsWith("/org");
   return (
     <div className="text-sn fixed left-0 top-0 z-50 flex h-16 w-full items-center justify-between border-b bg-background px-6">
       <div className="w-full">
         <div className="max-w-content inline-flex items-center gap-2">
-          <Button size="icon" variant="secondary" className="h-8 w-8">
-            <ChevronLeft size={18} />
-          </Button>
+          {!isOrgLevel && (
+            <Button size="icon" variant="secondary" className="h-8 w-8">
+              <ChevronLeft size={18} />
+            </Button>
+          )}
           <Dropdown
             list={orgs}
             selected={"1"}
             showArrow={false}
             className="h-9 px-3 pr-4"
           />
-          <span>/</span>
-          <Dropdown
-            list={games}
-            selected={"1"}
-            showArrow={false}
-            className="h-9 px-3 pr-4"
-            align="center"
-          />
+          {!isOrgLevel && <span>/</span>}
+          {!isOrgLevel && (
+            <Dropdown
+              list={games}
+              selected={"1"}
+              showArrow={false}
+              className="h-9 px-3 pr-4"
+              align="center"
+            />
+          )}
         </div>
       </div>
       <div className="flex w-full justify-center">

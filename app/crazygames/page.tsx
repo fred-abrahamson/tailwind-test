@@ -132,12 +132,12 @@ export default function PlayerSupport() {
         </section>
       </div>
       <div className="top-16 h-full max-h-[320px] w-full p-4 lg:sticky lg:max-h-[100vh]">
-        <div className="flex h-[calc(100vh_-_95px)] w-full justify-center overflow-hidden rounded-lg lg:items-center">
+        <div className="relative flex h-[calc(100vh_-_95px)] w-full justify-center overflow-hidden rounded-lg lg:items-center">
           <Image
             src="/crazygames-cover.png"
             width={0}
             height={0}
-            className="h-full w-auto object-cover"
+            className="mx-auto h-full w-full max-w-[1440px] object-cover"
             alt="CrazyGames"
             unoptimized
           />
