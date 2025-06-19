@@ -202,7 +202,6 @@ export const Sidebar = () => {
         style={{ scrollbarWidth: "none" }}
       >
         {currentNavItems.map((item) => {
-          // Use currentNavItems here
           if (item.path) {
             return (
               <Link
@@ -239,6 +238,7 @@ export const Sidebar = () => {
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="flex flex-col">
+                    {/* @ts-expect-error it's just a prototype */}
                     {item.children?.map((child) => {
                       return (
                         <Link
